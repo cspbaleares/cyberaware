@@ -1,0 +1,15 @@
+.env
+.env.*
+node_modules/
+dist/
+.next/
+coverage/
+tmp/
+.DS_Store
+/docker-data/
+/backups/
+/secrets/
+*.log
+logs/
+.vscode/
+.idea/
