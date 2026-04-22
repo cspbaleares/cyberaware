@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
-  allowedDevOrigins: ["127.0.0.1", "localhost", "135.125.199.247", "staging-cyberaware.cspcybersecurity.com", "dev.cyberaware.cspcybersecurity.com"],
+  allowedDevOrigins: ["127.0.0.1", "localhost", "135.125.199.247", "staging-cyberaware.cspcybersecurity.com", "dev.cyberaware.cspcybersecurity.com", "cyberaware.cspcybersecurity.com"],
   turbopack: {
     root: __dirname,
   },
