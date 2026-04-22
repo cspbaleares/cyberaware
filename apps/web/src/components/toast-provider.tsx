@@ -99,6 +99,7 @@ function ToastContainer({ toasts, removeToast }: { toasts: Toast[]; removeToast:
             alignItems: "center",
             gap: "0.75rem",
             animation: "slideIn 0.3s ease-out",
+            className: "toast-slide-in",
           }}
         >
           {icons[toast.type]}
@@ -117,18 +118,6 @@ function ToastContainer({ toasts, removeToast }: { toasts: Toast[]; removeToast:
           </button>
         </div>
       ))}
-      <style jsx>{`
-        @keyframes slideIn {
-          from {
-            transform: translateX(100%);
-            opacity: 0;
-          }
-          to {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-      `}</style>
     </div>
   );
 }

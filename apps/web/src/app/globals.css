@@ -1,5 +1,21 @@
 /* CyberAware Design System v2.0 - Commercial Grade */
 
+/* Toast Animation Keyframes */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toast-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
 :root {
   /* Background Scale - Dark (default) */
   --bg-primary: #0B0F19;
