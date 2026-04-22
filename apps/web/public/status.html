@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberAware - Estado del Sistema</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e2e8f0;
+            padding: 2rem;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { 
+            font-size: 2rem; 
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .timestamp { color: #64748b; margin-bottom: 2rem; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+        .card h3 {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        .card .value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .status-ok { color: #22c55e; }
+        .status-warning { color: #f97316; }
+        .status-error { color: #ef4444; }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        .uptime {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }
+        .auto-refresh {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(6, 182, 212, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+        }
+    </style>
+    <meta http-equiv="refresh" content="30">
+</head>
+<body>
+    <div class="container">
+        <h1>🔒 CyberAware - Estado del Sistema</h1>
+        <p class="timestamp">Actualizado: 2026-04-22 19:19:01</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>Servidor Web</h3>
+                <div class="value status-ok">ONLINE</div>
+                <div style="margin-top: 0.5rem; color: #64748b;">HTTP 200 • 0.076190s</div>
+            </div>
+            
+            <div class="card">
+                <h3>Uso de CPU</h3>
+                <div class="value">0.0%</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0.0%; background: 0 -gt 80 ? '#ef4444' : '0 -gt 60 ? '#f97316' : '#22c55e'"></div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Uso de Memoria</h3>
+                <div class="value">20.7%</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 20.7%; background: 20 -gt 80 ? '#ef4444' : '20 -gt 60 ? '#f97316' : '#22c55e'"></div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Uso de Disco</h3>
+                <div class="value">22%</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 22; background: 22 -gt 80 ? '#ef4444' : '22 -gt 60 ? '#f97316' : '#22c55e'"></div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Errores Recientes</h3>
+                <div class="value 0 -gt 10 ? 'status-error' : '0 -gt 0 ? 'status-warning' : 'status-ok'">0</div>
+                <div style="margin-top: 0.5rem; color: #64748b;">Última hora</div>
+            </div>
+            
+            <div class="card">
+                <h3>Backups</h3>
+                <div class="value status-ok">OK</div>
+                <div style="margin-top: 0.5rem; color: #64748b;">Automático activo</div>
+            </div>
+        </div>
+        
+        <div class="uptime">
+            <strong>⏱️ Uptime:</strong> up 3 weeks, 1 day, 19 hours, 46 minutes
+        </div>
+    </div>
+    
+    <div class="auto-refresh">🔄 Auto-refresh: 30s</div>
+</body>
+</html>
