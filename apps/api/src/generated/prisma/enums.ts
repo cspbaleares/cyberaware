@@ -9,7 +9,18 @@
 * 🟢 You can import this file directly.
 */
 
+export const MailSuppressionReason = {
+  bounce: 'bounce',
+  complaint: 'complaint',
+  manual_optout: 'manual_optout'
+} as const
+
+export type MailSuppressionReason = (typeof MailSuppressionReason)[keyof typeof MailSuppressionReason]
 
 
-// This file is empty because there are no enums in the schema.
-export {}
+export const MailSuppressionScope = {
+  simulation: 'simulation',
+  all: 'all'
+} as const
+
+export type MailSuppressionScope = (typeof MailSuppressionScope)[keyof typeof MailSuppressionScope]

@@ -9,8 +9,8 @@
  * 🟢 You can import this file directly.
  */
 import type * as runtime from "@prisma/client/runtime/client"
-import type * as $Enums from "../enums.js"
-import type * as Prisma from "../internal/prismaNamespace.js"
+import type * as $Enums from "../enums"
+import type * as Prisma from "../internal/prismaNamespace"
 
 /**
  * Model User
@@ -48,6 +48,7 @@ export type UserMinAggregateOutputType = {
   lockedUntil: Date | null
   lastLoginAt: Date | null
   passwordChangedAt: Date | null
+  mustChangePassword: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -67,6 +68,7 @@ export type UserMaxAggregateOutputType = {
   lockedUntil: Date | null
   lastLoginAt: Date | null
   passwordChangedAt: Date | null
+  mustChangePassword: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -86,6 +88,7 @@ export type UserCountAggregateOutputType = {
   lockedUntil: number
   lastLoginAt: number
   passwordChangedAt: number
+  mustChangePassword: number
   createdAt: number
   updatedAt: number
   deletedAt: number
@@ -115,6 +118,7 @@ export type UserMinAggregateInputType = {
   lockedUntil?: true
   lastLoginAt?: true
   passwordChangedAt?: true
+  mustChangePassword?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -134,6 +138,7 @@ export type UserMaxAggregateInputType = {
   lockedUntil?: true
   lastLoginAt?: true
   passwordChangedAt?: true
+  mustChangePassword?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -153,6 +158,7 @@ export type UserCountAggregateInputType = {
   lockedUntil?: true
   lastLoginAt?: true
   passwordChangedAt?: true
+  mustChangePassword?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -259,6 +265,7 @@ export type UserGroupByOutputType = {
   lockedUntil: Date | null
   lastLoginAt: Date | null
   passwordChangedAt: Date | null
+  mustChangePassword: boolean
   createdAt: Date
   updatedAt: Date
   deletedAt: Date | null
@@ -301,12 +308,22 @@ export type UserWhereInput = {
   lockedUntil?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   passwordChangedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  mustChangePassword?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventListRelationFilter
+  phishingTemplatesCreated?: Prisma.PhishingTemplateListRelationFilter
+  mailDomainsCreated?: Prisma.TenantMailDomainListRelationFilter
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventListRelationFilter
+  phishingSimulationsCreated?: Prisma.PhishingSimulationListRelationFilter
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientListRelationFilter
+  riskScores?: Prisma.RiskScoreListRelationFilter
   tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
   memberships?: Prisma.UserRoleListRelationFilter
   auditLogs?: Prisma.AuditLogListRelationFilter
+  campaignAssignments?: Prisma.CampaignAssignmentListRelationFilter
+  trainingEnrollments?: Prisma.TrainingEnrollmentListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -323,12 +340,22 @@ export type UserOrderByWithRelationInput = {
   lockedUntil?: Prisma.SortOrderInput | Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   passwordChangedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  mustChangePassword?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  outboundMailEvents?: Prisma.OutboundMailEventOrderByRelationAggregateInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateOrderByRelationAggregateInput
+  mailDomainsCreated?: Prisma.TenantMailDomainOrderByRelationAggregateInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventOrderByRelationAggregateInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationOrderByRelationAggregateInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientOrderByRelationAggregateInput
+  riskScores?: Prisma.RiskScoreOrderByRelationAggregateInput
   tenant?: Prisma.TenantOrderByWithRelationInput
   memberships?: Prisma.UserRoleOrderByRelationAggregateInput
   auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
+  campaignAssignments?: Prisma.CampaignAssignmentOrderByRelationAggregateInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -349,12 +376,22 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   lockedUntil?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   passwordChangedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  mustChangePassword?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventListRelationFilter
+  phishingTemplatesCreated?: Prisma.PhishingTemplateListRelationFilter
+  mailDomainsCreated?: Prisma.TenantMailDomainListRelationFilter
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventListRelationFilter
+  phishingSimulationsCreated?: Prisma.PhishingSimulationListRelationFilter
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientListRelationFilter
+  riskScores?: Prisma.RiskScoreListRelationFilter
   tenant?: Prisma.XOR<Prisma.TenantScalarRelationFilter, Prisma.TenantWhereInput>
   memberships?: Prisma.UserRoleListRelationFilter
   auditLogs?: Prisma.AuditLogListRelationFilter
+  campaignAssignments?: Prisma.CampaignAssignmentListRelationFilter
+  trainingEnrollments?: Prisma.TrainingEnrollmentListRelationFilter
 }, "id" | "tenantId_email">
 
 export type UserOrderByWithAggregationInput = {
@@ -371,6 +408,7 @@ export type UserOrderByWithAggregationInput = {
   lockedUntil?: Prisma.SortOrderInput | Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   passwordChangedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  mustChangePassword?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -398,6 +436,7 @@ export type UserScalarWhereWithAggregatesInput = {
   lockedUntil?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   lastLoginAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   passwordChangedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  mustChangePassword?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
@@ -416,12 +455,22 @@ export type UserCreateInput = {
   lockedUntil?: Date | string | null
   lastLoginAt?: Date | string | null
   passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreCreateNestedManyWithoutUserInput
   tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
   memberships?: Prisma.UserRoleCreateNestedManyWithoutUserInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -438,11 +487,21 @@ export type UserUncheckedCreateInput = {
   lockedUntil?: Date | string | null
   lastLoginAt?: Date | string | null
   passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreUncheckedCreateNestedManyWithoutUserInput
   memberships?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -458,12 +517,22 @@ export type UserUpdateInput = {
   lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUpdateManyWithoutUserNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
   memberships?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -480,11 +549,21 @@ export type UserUncheckedUpdateInput = {
   lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUncheckedUpdateManyWithoutUserNestedInput
   memberships?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -501,6 +580,7 @@ export type UserCreateManyInput = {
   lockedUntil?: Date | string | null
   lastLoginAt?: Date | string | null
   passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -519,6 +599,7 @@ export type UserUpdateManyMutationInput = {
   lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -538,6 +619,7 @@ export type UserUncheckedUpdateManyInput = {
   lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -572,6 +654,7 @@ export type UserCountOrderByAggregateInput = {
   lockedUntil?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
   passwordChangedAt?: Prisma.SortOrder
+  mustChangePassword?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -595,6 +678,7 @@ export type UserMaxOrderByAggregateInput = {
   lockedUntil?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
   passwordChangedAt?: Prisma.SortOrder
+  mustChangePassword?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -614,6 +698,7 @@ export type UserMinOrderByAggregateInput = {
   lockedUntil?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
   passwordChangedAt?: Prisma.SortOrder
+  mustChangePassword?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -717,6 +802,132 @@ export type UserUpdateOneWithoutAuditLogsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAuditLogsInput, Prisma.UserUpdateWithoutAuditLogsInput>, Prisma.UserUncheckedUpdateWithoutAuditLogsInput>
 }
 
+export type UserCreateNestedOneWithoutCampaignAssignmentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCampaignAssignmentsInput, Prisma.UserUncheckedCreateWithoutCampaignAssignmentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCampaignAssignmentsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCampaignAssignmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCampaignAssignmentsInput, Prisma.UserUncheckedCreateWithoutCampaignAssignmentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCampaignAssignmentsInput
+  upsert?: Prisma.UserUpsertWithoutCampaignAssignmentsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCampaignAssignmentsInput, Prisma.UserUpdateWithoutCampaignAssignmentsInput>, Prisma.UserUncheckedUpdateWithoutCampaignAssignmentsInput>
+}
+
+export type UserCreateNestedOneWithoutTrainingEnrollmentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTrainingEnrollmentsInput, Prisma.UserUncheckedCreateWithoutTrainingEnrollmentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTrainingEnrollmentsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutTrainingEnrollmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTrainingEnrollmentsInput, Prisma.UserUncheckedCreateWithoutTrainingEnrollmentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTrainingEnrollmentsInput
+  upsert?: Prisma.UserUpsertWithoutTrainingEnrollmentsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTrainingEnrollmentsInput, Prisma.UserUpdateWithoutTrainingEnrollmentsInput>, Prisma.UserUncheckedUpdateWithoutTrainingEnrollmentsInput>
+}
+
+export type UserCreateNestedOneWithoutRiskScoresInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRiskScoresInput, Prisma.UserUncheckedCreateWithoutRiskScoresInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRiskScoresInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRiskScoresNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRiskScoresInput, Prisma.UserUncheckedCreateWithoutRiskScoresInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRiskScoresInput
+  upsert?: Prisma.UserUpsertWithoutRiskScoresInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRiskScoresInput, Prisma.UserUpdateWithoutRiskScoresInput>, Prisma.UserUncheckedUpdateWithoutRiskScoresInput>
+}
+
+export type UserCreateNestedOneWithoutPhishingSimulationsCreatedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPhishingSimulationsCreatedInput, Prisma.UserUncheckedCreateWithoutPhishingSimulationsCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPhishingSimulationsCreatedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutPhishingSimulationsCreatedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPhishingSimulationsCreatedInput, Prisma.UserUncheckedCreateWithoutPhishingSimulationsCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPhishingSimulationsCreatedInput
+  upsert?: Prisma.UserUpsertWithoutPhishingSimulationsCreatedInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPhishingSimulationsCreatedInput, Prisma.UserUpdateWithoutPhishingSimulationsCreatedInput>, Prisma.UserUncheckedUpdateWithoutPhishingSimulationsCreatedInput>
+}
+
+export type UserCreateNestedOneWithoutPhishingSimulationRecipientsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPhishingSimulationRecipientsInput, Prisma.UserUncheckedCreateWithoutPhishingSimulationRecipientsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPhishingSimulationRecipientsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutPhishingSimulationRecipientsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPhishingSimulationRecipientsInput, Prisma.UserUncheckedCreateWithoutPhishingSimulationRecipientsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPhishingSimulationRecipientsInput
+  upsert?: Prisma.UserUpsertWithoutPhishingSimulationRecipientsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPhishingSimulationRecipientsInput, Prisma.UserUpdateWithoutPhishingSimulationRecipientsInput>, Prisma.UserUncheckedUpdateWithoutPhishingSimulationRecipientsInput>
+}
+
+export type UserCreateNestedOneWithoutPhishingSimulationEventsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPhishingSimulationEventsInput, Prisma.UserUncheckedCreateWithoutPhishingSimulationEventsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPhishingSimulationEventsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutPhishingSimulationEventsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPhishingSimulationEventsInput, Prisma.UserUncheckedCreateWithoutPhishingSimulationEventsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPhishingSimulationEventsInput
+  upsert?: Prisma.UserUpsertWithoutPhishingSimulationEventsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPhishingSimulationEventsInput, Prisma.UserUpdateWithoutPhishingSimulationEventsInput>, Prisma.UserUncheckedUpdateWithoutPhishingSimulationEventsInput>
+}
+
+export type UserCreateNestedOneWithoutMailDomainsCreatedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMailDomainsCreatedInput, Prisma.UserUncheckedCreateWithoutMailDomainsCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMailDomainsCreatedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutMailDomainsCreatedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMailDomainsCreatedInput, Prisma.UserUncheckedCreateWithoutMailDomainsCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMailDomainsCreatedInput
+  upsert?: Prisma.UserUpsertWithoutMailDomainsCreatedInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMailDomainsCreatedInput, Prisma.UserUpdateWithoutMailDomainsCreatedInput>, Prisma.UserUncheckedUpdateWithoutMailDomainsCreatedInput>
+}
+
+export type UserCreateNestedOneWithoutPhishingTemplatesCreatedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPhishingTemplatesCreatedInput, Prisma.UserUncheckedCreateWithoutPhishingTemplatesCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPhishingTemplatesCreatedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutPhishingTemplatesCreatedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPhishingTemplatesCreatedInput, Prisma.UserUncheckedCreateWithoutPhishingTemplatesCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPhishingTemplatesCreatedInput
+  upsert?: Prisma.UserUpsertWithoutPhishingTemplatesCreatedInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPhishingTemplatesCreatedInput, Prisma.UserUpdateWithoutPhishingTemplatesCreatedInput>, Prisma.UserUncheckedUpdateWithoutPhishingTemplatesCreatedInput>
+}
+
+export type UserCreateNestedOneWithoutOutboundMailEventsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOutboundMailEventsInput, Prisma.UserUncheckedCreateWithoutOutboundMailEventsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOutboundMailEventsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutOutboundMailEventsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOutboundMailEventsInput, Prisma.UserUncheckedCreateWithoutOutboundMailEventsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOutboundMailEventsInput
+  upsert?: Prisma.UserUpsertWithoutOutboundMailEventsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutOutboundMailEventsInput, Prisma.UserUpdateWithoutOutboundMailEventsInput>, Prisma.UserUncheckedUpdateWithoutOutboundMailEventsInput>
+}
+
 export type UserCreateWithoutTenantInput = {
   id?: string
   email: string
@@ -730,11 +941,21 @@ export type UserCreateWithoutTenantInput = {
   lockedUntil?: Date | string | null
   lastLoginAt?: Date | string | null
   passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreCreateNestedManyWithoutUserInput
   memberships?: Prisma.UserRoleCreateNestedManyWithoutUserInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTenantInput = {
@@ -750,11 +971,21 @@ export type UserUncheckedCreateWithoutTenantInput = {
   lockedUntil?: Date | string | null
   lastLoginAt?: Date | string | null
   passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreUncheckedCreateNestedManyWithoutUserInput
   memberships?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTenantInput = {
@@ -800,6 +1031,7 @@ export type UserScalarWhereInput = {
   lockedUntil?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   passwordChangedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  mustChangePassword?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
@@ -818,11 +1050,21 @@ export type UserCreateWithoutMembershipsInput = {
   lockedUntil?: Date | string | null
   lastLoginAt?: Date | string | null
   passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreCreateNestedManyWithoutUserInput
   tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMembershipsInput = {
@@ -839,10 +1081,20 @@ export type UserUncheckedCreateWithoutMembershipsInput = {
   lockedUntil?: Date | string | null
   lastLoginAt?: Date | string | null
   passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreUncheckedCreateNestedManyWithoutUserInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMembershipsInput = {
@@ -874,11 +1126,21 @@ export type UserUpdateWithoutMembershipsInput = {
   lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUpdateManyWithoutUserNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMembershipsInput = {
@@ -895,10 +1157,20 @@ export type UserUncheckedUpdateWithoutMembershipsInput = {
   lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUncheckedUpdateManyWithoutUserNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAuditLogsInput = {
@@ -914,11 +1186,21 @@ export type UserCreateWithoutAuditLogsInput = {
   lockedUntil?: Date | string | null
   lastLoginAt?: Date | string | null
   passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreCreateNestedManyWithoutUserInput
   tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
   memberships?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAuditLogsInput = {
@@ -935,10 +1217,20 @@ export type UserUncheckedCreateWithoutAuditLogsInput = {
   lockedUntil?: Date | string | null
   lastLoginAt?: Date | string | null
   passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreUncheckedCreateNestedManyWithoutUserInput
   memberships?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAuditLogsInput = {
@@ -970,11 +1262,21 @@ export type UserUpdateWithoutAuditLogsInput = {
   lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUpdateManyWithoutUserNestedInput
   tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
   memberships?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAuditLogsInput = {
@@ -991,10 +1293,1244 @@ export type UserUncheckedUpdateWithoutAuditLogsInput = {
   lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUncheckedUpdateManyWithoutUserNestedInput
   memberships?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutCampaignAssignmentsInput = {
+  id?: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreCreateNestedManyWithoutUserInput
+  tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
+  memberships?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCampaignAssignmentsInput = {
+  id?: string
+  tenantId: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreUncheckedCreateNestedManyWithoutUserInput
+  memberships?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCampaignAssignmentsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCampaignAssignmentsInput, Prisma.UserUncheckedCreateWithoutCampaignAssignmentsInput>
+}
+
+export type UserUpsertWithoutCampaignAssignmentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCampaignAssignmentsInput, Prisma.UserUncheckedUpdateWithoutCampaignAssignmentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCampaignAssignmentsInput, Prisma.UserUncheckedCreateWithoutCampaignAssignmentsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCampaignAssignmentsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCampaignAssignmentsInput, Prisma.UserUncheckedUpdateWithoutCampaignAssignmentsInput>
+}
+
+export type UserUpdateWithoutCampaignAssignmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUpdateManyWithoutUserNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
+  memberships?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCampaignAssignmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUncheckedUpdateManyWithoutUserNestedInput
+  memberships?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutTrainingEnrollmentsInput = {
+  id?: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreCreateNestedManyWithoutUserInput
+  tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
+  memberships?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutTrainingEnrollmentsInput = {
+  id?: string
+  tenantId: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreUncheckedCreateNestedManyWithoutUserInput
+  memberships?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutTrainingEnrollmentsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTrainingEnrollmentsInput, Prisma.UserUncheckedCreateWithoutTrainingEnrollmentsInput>
+}
+
+export type UserUpsertWithoutTrainingEnrollmentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTrainingEnrollmentsInput, Prisma.UserUncheckedUpdateWithoutTrainingEnrollmentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTrainingEnrollmentsInput, Prisma.UserUncheckedCreateWithoutTrainingEnrollmentsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTrainingEnrollmentsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTrainingEnrollmentsInput, Prisma.UserUncheckedUpdateWithoutTrainingEnrollmentsInput>
+}
+
+export type UserUpdateWithoutTrainingEnrollmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUpdateManyWithoutUserNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
+  memberships?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTrainingEnrollmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUncheckedUpdateManyWithoutUserNestedInput
+  memberships?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutRiskScoresInput = {
+  id?: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientCreateNestedManyWithoutUserInput
+  tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
+  memberships?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutRiskScoresInput = {
+  id?: string
+  tenantId: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedCreateNestedManyWithoutUserInput
+  memberships?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutRiskScoresInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRiskScoresInput, Prisma.UserUncheckedCreateWithoutRiskScoresInput>
+}
+
+export type UserUpsertWithoutRiskScoresInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRiskScoresInput, Prisma.UserUncheckedUpdateWithoutRiskScoresInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRiskScoresInput, Prisma.UserUncheckedCreateWithoutRiskScoresInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRiskScoresInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRiskScoresInput, Prisma.UserUncheckedUpdateWithoutRiskScoresInput>
+}
+
+export type UserUpdateWithoutRiskScoresInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUpdateManyWithoutUserNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
+  memberships?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRiskScoresInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedUpdateManyWithoutUserNestedInput
+  memberships?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutPhishingSimulationsCreatedInput = {
+  id?: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventCreateNestedManyWithoutUserInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreCreateNestedManyWithoutUserInput
+  tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
+  memberships?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutPhishingSimulationsCreatedInput = {
+  id?: string
+  tenantId: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedCreateNestedManyWithoutUserInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreUncheckedCreateNestedManyWithoutUserInput
+  memberships?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutPhishingSimulationsCreatedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPhishingSimulationsCreatedInput, Prisma.UserUncheckedCreateWithoutPhishingSimulationsCreatedInput>
+}
+
+export type UserUpsertWithoutPhishingSimulationsCreatedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPhishingSimulationsCreatedInput, Prisma.UserUncheckedUpdateWithoutPhishingSimulationsCreatedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPhishingSimulationsCreatedInput, Prisma.UserUncheckedCreateWithoutPhishingSimulationsCreatedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPhishingSimulationsCreatedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPhishingSimulationsCreatedInput, Prisma.UserUncheckedUpdateWithoutPhishingSimulationsCreatedInput>
+}
+
+export type UserUpdateWithoutPhishingSimulationsCreatedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUpdateManyWithoutUserNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUpdateManyWithoutUserNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
+  memberships?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPhishingSimulationsCreatedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUncheckedUpdateManyWithoutUserNestedInput
+  memberships?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutPhishingSimulationRecipientsInput = {
+  id?: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationCreateNestedManyWithoutCreatedByInput
+  riskScores?: Prisma.RiskScoreCreateNestedManyWithoutUserInput
+  tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
+  memberships?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutPhishingSimulationRecipientsInput = {
+  id?: string
+  tenantId: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedCreateNestedManyWithoutCreatedByInput
+  riskScores?: Prisma.RiskScoreUncheckedCreateNestedManyWithoutUserInput
+  memberships?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutPhishingSimulationRecipientsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPhishingSimulationRecipientsInput, Prisma.UserUncheckedCreateWithoutPhishingSimulationRecipientsInput>
+}
+
+export type UserUpsertWithoutPhishingSimulationRecipientsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPhishingSimulationRecipientsInput, Prisma.UserUncheckedUpdateWithoutPhishingSimulationRecipientsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPhishingSimulationRecipientsInput, Prisma.UserUncheckedCreateWithoutPhishingSimulationRecipientsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPhishingSimulationRecipientsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPhishingSimulationRecipientsInput, Prisma.UserUncheckedUpdateWithoutPhishingSimulationRecipientsInput>
+}
+
+export type UserUpdateWithoutPhishingSimulationRecipientsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUpdateManyWithoutCreatedByNestedInput
+  riskScores?: Prisma.RiskScoreUpdateManyWithoutUserNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
+  memberships?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPhishingSimulationRecipientsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedUpdateManyWithoutCreatedByNestedInput
+  riskScores?: Prisma.RiskScoreUncheckedUpdateManyWithoutUserNestedInput
+  memberships?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutPhishingSimulationEventsInput = {
+  id?: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainCreateNestedManyWithoutCreatedByInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreCreateNestedManyWithoutUserInput
+  tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
+  memberships?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutPhishingSimulationEventsInput = {
+  id?: string
+  tenantId: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreUncheckedCreateNestedManyWithoutUserInput
+  memberships?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutPhishingSimulationEventsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPhishingSimulationEventsInput, Prisma.UserUncheckedCreateWithoutPhishingSimulationEventsInput>
+}
+
+export type UserUpsertWithoutPhishingSimulationEventsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPhishingSimulationEventsInput, Prisma.UserUncheckedUpdateWithoutPhishingSimulationEventsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPhishingSimulationEventsInput, Prisma.UserUncheckedCreateWithoutPhishingSimulationEventsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPhishingSimulationEventsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPhishingSimulationEventsInput, Prisma.UserUncheckedUpdateWithoutPhishingSimulationEventsInput>
+}
+
+export type UserUpdateWithoutPhishingSimulationEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUpdateManyWithoutUserNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
+  memberships?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPhishingSimulationEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUncheckedUpdateManyWithoutUserNestedInput
+  memberships?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutMailDomainsCreatedInput = {
+  id?: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreCreateNestedManyWithoutUserInput
+  tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
+  memberships?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutMailDomainsCreatedInput = {
+  id?: string
+  tenantId: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedCreateNestedManyWithoutUserInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreUncheckedCreateNestedManyWithoutUserInput
+  memberships?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutMailDomainsCreatedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMailDomainsCreatedInput, Prisma.UserUncheckedCreateWithoutMailDomainsCreatedInput>
+}
+
+export type UserUpsertWithoutMailDomainsCreatedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMailDomainsCreatedInput, Prisma.UserUncheckedUpdateWithoutMailDomainsCreatedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMailDomainsCreatedInput, Prisma.UserUncheckedCreateWithoutMailDomainsCreatedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMailDomainsCreatedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMailDomainsCreatedInput, Prisma.UserUncheckedUpdateWithoutMailDomainsCreatedInput>
+}
+
+export type UserUpdateWithoutMailDomainsCreatedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUpdateManyWithoutUserNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
+  memberships?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMailDomainsCreatedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUncheckedUpdateManyWithoutUserNestedInput
+  memberships?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutPhishingTemplatesCreatedInput = {
+  id?: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventCreateNestedManyWithoutUserInput
+  mailDomainsCreated?: Prisma.TenantMailDomainCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreCreateNestedManyWithoutUserInput
+  tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
+  memberships?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutPhishingTemplatesCreatedInput = {
+  id?: string
+  tenantId: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedCreateNestedManyWithoutUserInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreUncheckedCreateNestedManyWithoutUserInput
+  memberships?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutPhishingTemplatesCreatedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPhishingTemplatesCreatedInput, Prisma.UserUncheckedCreateWithoutPhishingTemplatesCreatedInput>
+}
+
+export type UserUpsertWithoutPhishingTemplatesCreatedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPhishingTemplatesCreatedInput, Prisma.UserUncheckedUpdateWithoutPhishingTemplatesCreatedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPhishingTemplatesCreatedInput, Prisma.UserUncheckedCreateWithoutPhishingTemplatesCreatedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPhishingTemplatesCreatedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPhishingTemplatesCreatedInput, Prisma.UserUncheckedUpdateWithoutPhishingTemplatesCreatedInput>
+}
+
+export type UserUpdateWithoutPhishingTemplatesCreatedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUpdateManyWithoutUserNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUpdateManyWithoutUserNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
+  memberships?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPhishingTemplatesCreatedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedUpdateManyWithoutUserNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUncheckedUpdateManyWithoutUserNestedInput
+  memberships?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutOutboundMailEventsInput = {
+  id?: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  phishingTemplatesCreated?: Prisma.PhishingTemplateCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreCreateNestedManyWithoutUserInput
+  tenant: Prisma.TenantCreateNestedOneWithoutUsersInput
+  memberships?: Prisma.UserRoleCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutOutboundMailEventsInput = {
+  id?: string
+  tenantId: string
+  email: string
+  fullName: string
+  passwordHash: string
+  isActive?: boolean
+  isSuperAdmin?: boolean
+  mfaEnabled?: boolean
+  mfaSecretEnc?: string | null
+  failedLoginCount?: number
+  lockedUntil?: Date | string | null
+  lastLoginAt?: Date | string | null
+  passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedCreateNestedManyWithoutUserInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedCreateNestedManyWithoutCreatedByInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedCreateNestedManyWithoutUserInput
+  riskScores?: Prisma.RiskScoreUncheckedCreateNestedManyWithoutUserInput
+  memberships?: Prisma.UserRoleUncheckedCreateNestedManyWithoutUserInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutUserInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedCreateNestedManyWithoutUserInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutOutboundMailEventsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutOutboundMailEventsInput, Prisma.UserUncheckedCreateWithoutOutboundMailEventsInput>
+}
+
+export type UserUpsertWithoutOutboundMailEventsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutOutboundMailEventsInput, Prisma.UserUncheckedUpdateWithoutOutboundMailEventsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutOutboundMailEventsInput, Prisma.UserUncheckedCreateWithoutOutboundMailEventsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutOutboundMailEventsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutOutboundMailEventsInput, Prisma.UserUncheckedUpdateWithoutOutboundMailEventsInput>
+}
+
+export type UserUpdateWithoutOutboundMailEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUpdateManyWithoutUserNestedInput
+  tenant?: Prisma.TenantUpdateOneRequiredWithoutUsersNestedInput
+  memberships?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutOutboundMailEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tenantId?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSuperAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mfaSecretEnc?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  failedLoginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUncheckedUpdateManyWithoutUserNestedInput
+  memberships?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyTenantInput = {
@@ -1010,6 +2546,7 @@ export type UserCreateManyTenantInput = {
   lockedUntil?: Date | string | null
   lastLoginAt?: Date | string | null
   passwordChangedAt?: Date | string | null
+  mustChangePassword?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -1028,11 +2565,21 @@ export type UserUpdateWithoutTenantInput = {
   lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUpdateManyWithoutUserNestedInput
   memberships?: Prisma.UserRoleUpdateManyWithoutUserNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTenantInput = {
@@ -1048,11 +2595,21 @@ export type UserUncheckedUpdateWithoutTenantInput = {
   lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingTemplatesCreated?: Prisma.PhishingTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  mailDomainsCreated?: Prisma.TenantMailDomainUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedUpdateManyWithoutUserNestedInput
+  phishingSimulationsCreated?: Prisma.PhishingSimulationUncheckedUpdateManyWithoutCreatedByNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedUpdateManyWithoutUserNestedInput
+  riskScores?: Prisma.RiskScoreUncheckedUpdateManyWithoutUserNestedInput
   memberships?: Prisma.UserRoleUncheckedUpdateManyWithoutUserNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutUserNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutTenantInput = {
@@ -1068,6 +2625,7 @@ export type UserUncheckedUpdateManyWithoutTenantInput = {
   lockedUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   passwordChangedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mustChangePassword?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1079,13 +2637,31 @@ export type UserUncheckedUpdateManyWithoutTenantInput = {
  */
 
 export type UserCountOutputType = {
+  outboundMailEvents: number
+  phishingTemplatesCreated: number
+  mailDomainsCreated: number
+  phishingSimulationEvents: number
+  phishingSimulationsCreated: number
+  phishingSimulationRecipients: number
+  riskScores: number
   memberships: number
   auditLogs: number
+  campaignAssignments: number
+  trainingEnrollments: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  outboundMailEvents?: boolean | UserCountOutputTypeCountOutboundMailEventsArgs
+  phishingTemplatesCreated?: boolean | UserCountOutputTypeCountPhishingTemplatesCreatedArgs
+  mailDomainsCreated?: boolean | UserCountOutputTypeCountMailDomainsCreatedArgs
+  phishingSimulationEvents?: boolean | UserCountOutputTypeCountPhishingSimulationEventsArgs
+  phishingSimulationsCreated?: boolean | UserCountOutputTypeCountPhishingSimulationsCreatedArgs
+  phishingSimulationRecipients?: boolean | UserCountOutputTypeCountPhishingSimulationRecipientsArgs
+  riskScores?: boolean | UserCountOutputTypeCountRiskScoresArgs
   memberships?: boolean | UserCountOutputTypeCountMembershipsArgs
   auditLogs?: boolean | UserCountOutputTypeCountAuditLogsArgs
+  campaignAssignments?: boolean | UserCountOutputTypeCountCampaignAssignmentsArgs
+  trainingEnrollments?: boolean | UserCountOutputTypeCountTrainingEnrollmentsArgs
 }
 
 /**
@@ -1101,6 +2677,55 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountOutboundMailEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OutboundMailEventWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPhishingTemplatesCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PhishingTemplateWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMailDomainsCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TenantMailDomainWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPhishingSimulationEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PhishingSimulationEventWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPhishingSimulationsCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PhishingSimulationWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPhishingSimulationRecipientsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PhishingSimulationRecipientWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRiskScoresArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RiskScoreWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountMembershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.UserRoleWhereInput
 }
@@ -1110,6 +2735,20 @@ export type UserCountOutputTypeCountMembershipsArgs<ExtArgs extends runtime.Type
  */
 export type UserCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.AuditLogWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCampaignAssignmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CampaignAssignmentWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTrainingEnrollmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TrainingEnrollmentWhereInput
 }
 
 
@@ -1127,12 +2766,22 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   lockedUntil?: boolean
   lastLoginAt?: boolean
   passwordChangedAt?: boolean
+  mustChangePassword?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
+  outboundMailEvents?: boolean | Prisma.User$outboundMailEventsArgs<ExtArgs>
+  phishingTemplatesCreated?: boolean | Prisma.User$phishingTemplatesCreatedArgs<ExtArgs>
+  mailDomainsCreated?: boolean | Prisma.User$mailDomainsCreatedArgs<ExtArgs>
+  phishingSimulationEvents?: boolean | Prisma.User$phishingSimulationEventsArgs<ExtArgs>
+  phishingSimulationsCreated?: boolean | Prisma.User$phishingSimulationsCreatedArgs<ExtArgs>
+  phishingSimulationRecipients?: boolean | Prisma.User$phishingSimulationRecipientsArgs<ExtArgs>
+  riskScores?: boolean | Prisma.User$riskScoresArgs<ExtArgs>
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
   memberships?: boolean | Prisma.User$membershipsArgs<ExtArgs>
   auditLogs?: boolean | Prisma.User$auditLogsArgs<ExtArgs>
+  campaignAssignments?: boolean | Prisma.User$campaignAssignmentsArgs<ExtArgs>
+  trainingEnrollments?: boolean | Prisma.User$trainingEnrollmentsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1150,6 +2799,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   lockedUntil?: boolean
   lastLoginAt?: boolean
   passwordChangedAt?: boolean
+  mustChangePassword?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -1170,6 +2820,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   lockedUntil?: boolean
   lastLoginAt?: boolean
   passwordChangedAt?: boolean
+  mustChangePassword?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -1190,16 +2841,26 @@ export type UserSelectScalar = {
   lockedUntil?: boolean
   lastLoginAt?: boolean
   passwordChangedAt?: boolean
+  mustChangePassword?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenantId" | "email" | "fullName" | "passwordHash" | "isActive" | "isSuperAdmin" | "mfaEnabled" | "mfaSecretEnc" | "failedLoginCount" | "lockedUntil" | "lastLoginAt" | "passwordChangedAt" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tenantId" | "email" | "fullName" | "passwordHash" | "isActive" | "isSuperAdmin" | "mfaEnabled" | "mfaSecretEnc" | "failedLoginCount" | "lockedUntil" | "lastLoginAt" | "passwordChangedAt" | "mustChangePassword" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  outboundMailEvents?: boolean | Prisma.User$outboundMailEventsArgs<ExtArgs>
+  phishingTemplatesCreated?: boolean | Prisma.User$phishingTemplatesCreatedArgs<ExtArgs>
+  mailDomainsCreated?: boolean | Prisma.User$mailDomainsCreatedArgs<ExtArgs>
+  phishingSimulationEvents?: boolean | Prisma.User$phishingSimulationEventsArgs<ExtArgs>
+  phishingSimulationsCreated?: boolean | Prisma.User$phishingSimulationsCreatedArgs<ExtArgs>
+  phishingSimulationRecipients?: boolean | Prisma.User$phishingSimulationRecipientsArgs<ExtArgs>
+  riskScores?: boolean | Prisma.User$riskScoresArgs<ExtArgs>
   tenant?: boolean | Prisma.TenantDefaultArgs<ExtArgs>
   memberships?: boolean | Prisma.User$membershipsArgs<ExtArgs>
   auditLogs?: boolean | Prisma.User$auditLogsArgs<ExtArgs>
+  campaignAssignments?: boolean | Prisma.User$campaignAssignmentsArgs<ExtArgs>
+  trainingEnrollments?: boolean | Prisma.User$trainingEnrollmentsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1212,9 +2873,18 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
+    outboundMailEvents: Prisma.$OutboundMailEventPayload<ExtArgs>[]
+    phishingTemplatesCreated: Prisma.$PhishingTemplatePayload<ExtArgs>[]
+    mailDomainsCreated: Prisma.$TenantMailDomainPayload<ExtArgs>[]
+    phishingSimulationEvents: Prisma.$PhishingSimulationEventPayload<ExtArgs>[]
+    phishingSimulationsCreated: Prisma.$PhishingSimulationPayload<ExtArgs>[]
+    phishingSimulationRecipients: Prisma.$PhishingSimulationRecipientPayload<ExtArgs>[]
+    riskScores: Prisma.$RiskScorePayload<ExtArgs>[]
     tenant: Prisma.$TenantPayload<ExtArgs>
     memberships: Prisma.$UserRolePayload<ExtArgs>[]
     auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+    campaignAssignments: Prisma.$CampaignAssignmentPayload<ExtArgs>[]
+    trainingEnrollments: Prisma.$TrainingEnrollmentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1230,6 +2900,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     lockedUntil: Date | null
     lastLoginAt: Date | null
     passwordChangedAt: Date | null
+    mustChangePassword: boolean
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
@@ -1627,9 +3298,18 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  outboundMailEvents<T extends Prisma.User$outboundMailEventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$outboundMailEventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OutboundMailEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  phishingTemplatesCreated<T extends Prisma.User$phishingTemplatesCreatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$phishingTemplatesCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PhishingTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  mailDomainsCreated<T extends Prisma.User$mailDomainsCreatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$mailDomainsCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TenantMailDomainPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  phishingSimulationEvents<T extends Prisma.User$phishingSimulationEventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$phishingSimulationEventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PhishingSimulationEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  phishingSimulationsCreated<T extends Prisma.User$phishingSimulationsCreatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$phishingSimulationsCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PhishingSimulationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  phishingSimulationRecipients<T extends Prisma.User$phishingSimulationRecipientsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$phishingSimulationRecipientsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PhishingSimulationRecipientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  riskScores<T extends Prisma.User$riskScoresArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$riskScoresArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RiskScorePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   tenant<T extends Prisma.TenantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TenantDefaultArgs<ExtArgs>>): Prisma.Prisma__TenantClient<runtime.Types.Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   memberships<T extends Prisma.User$membershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$membershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserRolePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   auditLogs<T extends Prisma.User$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  campaignAssignments<T extends Prisma.User$campaignAssignmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$campaignAssignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CampaignAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  trainingEnrollments<T extends Prisma.User$trainingEnrollmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$trainingEnrollmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TrainingEnrollmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1672,6 +3352,7 @@ export interface UserFieldRefs {
   readonly lockedUntil: Prisma.FieldRef<"User", 'DateTime'>
   readonly lastLoginAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly passwordChangedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly mustChangePassword: Prisma.FieldRef<"User", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"User", 'DateTime'>
@@ -2076,6 +3757,174 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * User.outboundMailEvents
+ */
+export type User$outboundMailEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OutboundMailEvent
+   */
+  select?: Prisma.OutboundMailEventSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OutboundMailEvent
+   */
+  omit?: Prisma.OutboundMailEventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OutboundMailEventInclude<ExtArgs> | null
+  where?: Prisma.OutboundMailEventWhereInput
+  orderBy?: Prisma.OutboundMailEventOrderByWithRelationInput | Prisma.OutboundMailEventOrderByWithRelationInput[]
+  cursor?: Prisma.OutboundMailEventWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OutboundMailEventScalarFieldEnum | Prisma.OutboundMailEventScalarFieldEnum[]
+}
+
+/**
+ * User.phishingTemplatesCreated
+ */
+export type User$phishingTemplatesCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PhishingTemplate
+   */
+  select?: Prisma.PhishingTemplateSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PhishingTemplate
+   */
+  omit?: Prisma.PhishingTemplateOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PhishingTemplateInclude<ExtArgs> | null
+  where?: Prisma.PhishingTemplateWhereInput
+  orderBy?: Prisma.PhishingTemplateOrderByWithRelationInput | Prisma.PhishingTemplateOrderByWithRelationInput[]
+  cursor?: Prisma.PhishingTemplateWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PhishingTemplateScalarFieldEnum | Prisma.PhishingTemplateScalarFieldEnum[]
+}
+
+/**
+ * User.mailDomainsCreated
+ */
+export type User$mailDomainsCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TenantMailDomain
+   */
+  select?: Prisma.TenantMailDomainSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TenantMailDomain
+   */
+  omit?: Prisma.TenantMailDomainOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TenantMailDomainInclude<ExtArgs> | null
+  where?: Prisma.TenantMailDomainWhereInput
+  orderBy?: Prisma.TenantMailDomainOrderByWithRelationInput | Prisma.TenantMailDomainOrderByWithRelationInput[]
+  cursor?: Prisma.TenantMailDomainWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TenantMailDomainScalarFieldEnum | Prisma.TenantMailDomainScalarFieldEnum[]
+}
+
+/**
+ * User.phishingSimulationEvents
+ */
+export type User$phishingSimulationEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PhishingSimulationEvent
+   */
+  select?: Prisma.PhishingSimulationEventSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PhishingSimulationEvent
+   */
+  omit?: Prisma.PhishingSimulationEventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PhishingSimulationEventInclude<ExtArgs> | null
+  where?: Prisma.PhishingSimulationEventWhereInput
+  orderBy?: Prisma.PhishingSimulationEventOrderByWithRelationInput | Prisma.PhishingSimulationEventOrderByWithRelationInput[]
+  cursor?: Prisma.PhishingSimulationEventWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PhishingSimulationEventScalarFieldEnum | Prisma.PhishingSimulationEventScalarFieldEnum[]
+}
+
+/**
+ * User.phishingSimulationsCreated
+ */
+export type User$phishingSimulationsCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PhishingSimulation
+   */
+  select?: Prisma.PhishingSimulationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PhishingSimulation
+   */
+  omit?: Prisma.PhishingSimulationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PhishingSimulationInclude<ExtArgs> | null
+  where?: Prisma.PhishingSimulationWhereInput
+  orderBy?: Prisma.PhishingSimulationOrderByWithRelationInput | Prisma.PhishingSimulationOrderByWithRelationInput[]
+  cursor?: Prisma.PhishingSimulationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PhishingSimulationScalarFieldEnum | Prisma.PhishingSimulationScalarFieldEnum[]
+}
+
+/**
+ * User.phishingSimulationRecipients
+ */
+export type User$phishingSimulationRecipientsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PhishingSimulationRecipient
+   */
+  select?: Prisma.PhishingSimulationRecipientSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PhishingSimulationRecipient
+   */
+  omit?: Prisma.PhishingSimulationRecipientOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PhishingSimulationRecipientInclude<ExtArgs> | null
+  where?: Prisma.PhishingSimulationRecipientWhereInput
+  orderBy?: Prisma.PhishingSimulationRecipientOrderByWithRelationInput | Prisma.PhishingSimulationRecipientOrderByWithRelationInput[]
+  cursor?: Prisma.PhishingSimulationRecipientWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PhishingSimulationRecipientScalarFieldEnum | Prisma.PhishingSimulationRecipientScalarFieldEnum[]
+}
+
+/**
+ * User.riskScores
+ */
+export type User$riskScoresArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RiskScore
+   */
+  select?: Prisma.RiskScoreSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RiskScore
+   */
+  omit?: Prisma.RiskScoreOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RiskScoreInclude<ExtArgs> | null
+  where?: Prisma.RiskScoreWhereInput
+  orderBy?: Prisma.RiskScoreOrderByWithRelationInput | Prisma.RiskScoreOrderByWithRelationInput[]
+  cursor?: Prisma.RiskScoreWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RiskScoreScalarFieldEnum | Prisma.RiskScoreScalarFieldEnum[]
+}
+
+/**
  * User.memberships
  */
 export type User$membershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2121,6 +3970,54 @@ export type User$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
+}
+
+/**
+ * User.campaignAssignments
+ */
+export type User$campaignAssignmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CampaignAssignment
+   */
+  select?: Prisma.CampaignAssignmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CampaignAssignment
+   */
+  omit?: Prisma.CampaignAssignmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CampaignAssignmentInclude<ExtArgs> | null
+  where?: Prisma.CampaignAssignmentWhereInput
+  orderBy?: Prisma.CampaignAssignmentOrderByWithRelationInput | Prisma.CampaignAssignmentOrderByWithRelationInput[]
+  cursor?: Prisma.CampaignAssignmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CampaignAssignmentScalarFieldEnum | Prisma.CampaignAssignmentScalarFieldEnum[]
+}
+
+/**
+ * User.trainingEnrollments
+ */
+export type User$trainingEnrollmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TrainingEnrollment
+   */
+  select?: Prisma.TrainingEnrollmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TrainingEnrollment
+   */
+  omit?: Prisma.TrainingEnrollmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TrainingEnrollmentInclude<ExtArgs> | null
+  where?: Prisma.TrainingEnrollmentWhereInput
+  orderBy?: Prisma.TrainingEnrollmentOrderByWithRelationInput | Prisma.TrainingEnrollmentOrderByWithRelationInput[]
+  cursor?: Prisma.TrainingEnrollmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TrainingEnrollmentScalarFieldEnum | Prisma.TrainingEnrollmentScalarFieldEnum[]
 }
 
 /**

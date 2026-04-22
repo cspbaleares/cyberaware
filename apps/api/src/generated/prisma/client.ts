@@ -14,12 +14,12 @@ import * as process from 'node:process'
 import * as path from 'node:path'
 
 import * as runtime from "@prisma/client/runtime/client"
-import * as $Enums from "./enums.js"
-import * as $Class from "./internal/class.js"
-import * as Prisma from "./internal/prismaNamespace.js"
+import * as $Enums from "./enums"
+import * as $Class from "./internal/class"
+import * as Prisma from "./internal/prismaNamespace"
 
-export * as $Enums from './enums.js'
-export * from "./enums.js"
+export * as $Enums from './enums'
+export * from "./enums"
 /**
  * ## Prisma Client
  * 
@@ -64,3 +64,73 @@ export type UserRole = Prisma.UserRoleModel
  * 
  */
 export type AuditLog = Prisma.AuditLogModel
+/**
+ * Model Campaign
+ * 
+ */
+export type Campaign = Prisma.CampaignModel
+/**
+ * Model CampaignAssignment
+ * 
+ */
+export type CampaignAssignment = Prisma.CampaignAssignmentModel
+/**
+ * Model TrainingCourse
+ * 
+ */
+export type TrainingCourse = Prisma.TrainingCourseModel
+/**
+ * Model TrainingEnrollment
+ * 
+ */
+export type TrainingEnrollment = Prisma.TrainingEnrollmentModel
+/**
+ * Model RiskScore
+ * 
+ */
+export type RiskScore = Prisma.RiskScoreModel
+/**
+ * Model PhishingSimulation
+ * 
+ */
+export type PhishingSimulation = Prisma.PhishingSimulationModel
+/**
+ * Model PhishingSimulationRecipient
+ * 
+ */
+export type PhishingSimulationRecipient = Prisma.PhishingSimulationRecipientModel
+/**
+ * Model PhishingSimulationEvent
+ * 
+ */
+export type PhishingSimulationEvent = Prisma.PhishingSimulationEventModel
+/**
+ * Model TenantMailDomain
+ * 
+ */
+export type TenantMailDomain = Prisma.TenantMailDomainModel
+/**
+ * Model PhishingTemplate
+ * 
+ */
+export type PhishingTemplate = Prisma.PhishingTemplateModel
+/**
+ * Model OutboundMailEvent
+ * 
+ */
+export type OutboundMailEvent = Prisma.OutboundMailEventModel
+/**
+ * Model MailSuppression
+ * 
+ */
+export type MailSuppression = Prisma.MailSuppressionModel
+/**
+ * Model TenantModuleAccess
+ * 
+ */
+export type TenantModuleAccess = Prisma.TenantModuleAccessModel
+/**
+ * Model AutomationRule
+ * 
+ */
+export type AutomationRule = Prisma.AutomationRuleModel

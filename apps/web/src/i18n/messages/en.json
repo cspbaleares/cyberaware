@@ -1,0 +1,204 @@
+{
+  "metadata": {
+    "title": "CyberAware - Security Awareness Platform",
+    "description": "Reduce human risk with phishing simulations, personalized training, and intelligent automation."
+  },
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "logout": "Logout",
+    "profile": "Profile",
+    "modules": {
+      "simulation": "Simulation",
+      "risk": "Human Risk",
+      "training": "Training",
+      "automation": "Automation"
+    },
+    "platform": "Platform"
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "Leading Security Awareness Platform",
+      "title": "Reduce human risk in your organization",
+      "description": "CyberAware combines phishing simulations, risk analysis, and personalized training to build a strong and measurable security culture.",
+      "ctaPrimary": "Get Started",
+      "ctaSecondary": "Request Demo"
+    },
+    "trust": {
+      "title": "Trusted by security teams in",
+      "industries": {
+        "tech": "Technology",
+        "health": "Healthcare",
+        "finance": "Finance",
+        "education": "Education"
+      }
+    },
+    "features": {
+      "title": "Everything you need in one platform",
+      "description": "Four integrated modules working together to continuously reduce human risk.",
+      "phishing": {
+        "title": "Phishing Simulations",
+        "description": "Realistic campaigns to measure and improve your team's resilience against attacks."
+      },
+      "risk": {
+        "title": "Human Risk Analysis",
+        "description": "Identify vulnerable users and prioritize data-driven interventions."
+      },
+      "training": {
+        "title": "Personalized Training",
+        "description": "Adaptive courses that adjust to each employee's risk level."
+      },
+      "automation": {
+        "title": "Intelligent Automation",
+        "description": "Automatic rules that respond to security events in real-time."
+      }
+    },
+    "cta": {
+      "title": "Ready to strengthen your security?",
+      "description": "Join organizations already reducing their human risk with CyberAware.",
+      "button": "Access Platform"
+    }
+  },
+  "dashboard": {
+    "welcome": "Hello, {name}!",
+    "welcomeText": "Welcome to {tenant}. Here's a summary of recent activity.",
+    "stats": {
+      "activeUsers": "Active Users",
+      "campaignsThisMonth": "Campaigns This Month",
+      "trainingCompleted": "Training Completed",
+      "avgRisk": "Average Risk"
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "description": "Common tasks to manage your security",
+      "newCampaign": "New Campaign",
+      "viewRisks": "View Risks",
+      "assignCourse": "Assign Course",
+      "createRule": "Create Rule"
+    },
+    "modules": {
+      "title": "Available Modules",
+      "description": "Access your suite tools",
+      "openModule": "Open Module"
+    }
+  },
+  "profile": {
+    "title": "User Profile",
+    "description": "Manage your personal information and preferences",
+    "personalInfo": {
+      "title": "Personal Information",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "edit": "Edit Profile",
+      "save": "Save Changes"
+    },
+    "account": {
+      "title": "Account Information",
+      "organization": "Organization",
+      "slug": "Slug",
+      "memberSince": "Member Since",
+      "lastLogin": "Last Login"
+    },
+    "security": {
+      "title": "Security",
+      "password": "Password",
+      "lastUpdated": "Last Updated",
+      "changePassword": "Change Password",
+      "twoFactor": "Two-Factor Authentication",
+      "twoFactorDesc": "Add an extra layer of security to your account",
+      "setup2FA": "Setup 2FA"
+    },
+    "modules": {
+      "title": "Enabled Modules",
+      "active": "Active"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "securityAlerts": "Security Alerts",
+      "securityAlertsDesc": "Notifications about security events",
+      "weeklyReports": "Weekly Reports",
+      "weeklyReportsDesc": "Weekly activity summary",
+      "platformUpdates": "Platform Updates",
+      "platformUpdatesDesc": "New features and improvements",
+      "marketingEmails": "Marketing Emails",
+      "marketingEmailsDesc": "Promotions and news"
+    }
+  },
+  "analytics": {
+    "title": "Analytics Dashboard",
+    "description": "Security metrics and statistics overview",
+    "metrics": {
+      "emailsSent": "Phishing Emails Sent",
+      "clickRate": "Click Rate",
+      "highRiskUsers": "High Risk Users",
+      "trainingCompleted": "Training Completed"
+    },
+    "charts": {
+      "phishingActivity": "Phishing Activity",
+      "phishingDesc": "Emails sent vs click rates (last 7 days)",
+      "riskTrend": "Risk Trend",
+      "riskDesc": "Average risk score (last 7 days)",
+      "riskDistribution": "Risk Distribution",
+      "trainingProgress": "Training Progress",
+      "automation": "Automation"
+    },
+    "activity": {
+      "title": "Recent Activity",
+      "description": "Latest security events detected",
+      "event": "Event",
+      "user": "User",
+      "module": "Module",
+      "date": "Date",
+      "status": "Status"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "create": "Create",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "actions": "Actions",
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "pending": "Pending",
+      "completed": "Completed",
+      "error": "Error",
+      "success": "Success",
+      "warning": "Warning",
+      "info": "Info"
+    },
+    "roles": {
+      "superAdmin": "Super Admin",
+      "platformAdmin": "Platform Admin",
+      "tenantAdmin": "Tenant Admin",
+      "user": "User",
+      "analyst": "Analyst"
+    }
+  },
+  "errors": {
+    "404": {
+      "title": "Page Not Found",
+      "description": "The page you're looking for doesn't exist or has been moved.",
+      "back": "Go Back"
+    },
+    "500": {
+      "title": "Server Error",
+      "description": "Something went wrong. Please try again later.",
+      "retry": "Retry"
+    },
+    "offline": {
+      "title": "No Internet Connection",
+      "description": "It seems you've lost connection. Some features are available offline.",
+      "refresh": "Try Again",
+      "home": "Go Home"
+    }
+  }
+}

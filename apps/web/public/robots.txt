@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Public pages
+Allow: /login
+
+# Protected pages (will redirect to login)
+Allow: /module-1
+Allow: /module-2
+Allow: /module-3
+Allow: /module-4
+
+# Sitemap
+Sitemap: https://dev.cyberaware.cspcybersecurity.com/sitemap.xml

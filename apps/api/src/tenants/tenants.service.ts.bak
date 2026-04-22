@@ -1,0 +1,134 @@
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
+import { CreateTenantDto } from './dto/create-tenant.dto';
+
+@Injectable()
+export class TenantsService {
+  constructor(private readonly prisma: PrismaService) {}
+
+  async listTenants() {
+    return this.prisma.tenant.findMany({
+      where: {
+        deletedAt: null,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        isActive: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+    });
+  }
+
+  async getTenantById(id: string) {
+    const tenant = await this.prisma.tenant.findFirst({
+      where: {
+        id,
+        deletedAt: null,
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        isActive: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+    });
+
+    if (!tenant) {
+      throw new NotFoundException('Tenant no encontrado');
+    }
+
+    return tenant;
+  }
+
+  async createTenant(dto: CreateTenantDto) {
+    const existing = await this.prisma.tenant.findFirst({
+      where: {
+        OR: [{ name: dto.name }, { slug: dto.slug }],
+        deletedAt: null,
+      },
+      select: { id: true },
+    });
+
+    if (existing) {
+      throw new ConflictException('Ya existe un tenant con ese nombre o slug');
+    }
+
+    return this.prisma.tenant.create({
+      data: {
+        name: dto.name,
+        slug: dto.slug,
+        isActive: true,
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        isActive: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+    });
+  }
+
+  async disableTenant(id: string) {
+    await this.ensureTenantExists(id);
+
+    return this.prisma.tenant.update({
+      where: { id },
+      data: {
+        isActive: false,
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        isActive: true,
+        updatedAt: true,
+      },
+    });
+  }
+
+  async enableTenant(id: string) {
+    await this.ensureTenantExists(id);
+
+    return this.prisma.tenant.update({
+      where: { id },
+      data: {
+        isActive: true,
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        isActive: true,
+        updatedAt: true,
+      },
+    });
+  }
+
+  private async ensureTenantExists(id: string) {
+    const tenant = await this.prisma.tenant.findFirst({
+      where: {
+        id,
+        deletedAt: null,
+      },
+      select: { id: true },
+    });
+
+    if (!tenant) {
+      throw new NotFoundException('Tenant no encontrado');
+    }
+  }
+}

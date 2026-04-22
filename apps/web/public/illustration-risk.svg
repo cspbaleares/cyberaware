@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="riskGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#DC2626;stop-opacity:0.8" />
+    </linearGradient>
+    <linearGradient id="riskGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:0.8" />
+    </linearGradient>
+    <linearGradient id="riskGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="#0B0F19"/>
+  
+  <!-- Grid -->
+  <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1F2937" stroke-width="1"/>
+  </pattern>
+  <rect width="400" height="300" fill="url(#grid2)"/>
+  
+  <!-- Risk gauge -->
+  <g transform="translate(200, 180)">
+    <!-- Gauge arc -->
+    <path d="M-120 0 A120 120 0 0 1 120 0" fill="none" stroke="#1F2937" stroke-width="20"/>
+    <path d="M-120 0 A120 120 0 0 1 -60 -104" fill="none" stroke="url(#riskGrad3)" stroke-width="20"/>
+    <path d="M-60 -104 A120 120 0 0 1 60 -104" fill="none" stroke="url(#riskGrad2)" stroke-width="20"/>
+    <path d="M60 -104 A120 120 0 0 1 120 0" fill="none" stroke="url(#riskGrad1)" stroke-width="20"/>
+    
+    <!-- Needle -->
+    <line x1="0" y1="0" x2="0" y2="-100" stroke="#3B82F6" stroke-width="4" transform="rotate(30)"/>
+    <circle cx="0" cy="0" r="15" fill="#3B82F6"/>
+    
+    <!-- Labels -->
+    <text x="-100" y="30" fill="#10B981" font-size="14" font-weight="bold">Bajo</text>
+    <text x="-20" y="-130" fill="#F59E0B" font-size="14" font-weight="bold">Medio</text>
+    <text x="80" y="30" fill="#EF4444" font-size="14" font-weight="bold">Alto</text>
+  </g>
+  
+  <!-- User icons -->
+  <g transform="translate(50, 50)">
+    <circle cx="20" cy="20" r="20" fill="#1F2937" stroke="#EF4444" stroke-width="2"/>
+    <circle cx="20" cy="15" r="8" fill="#EF4444"/>
+    <path d="M5 35 Q20 25 35 35" fill="none" stroke="#EF4444" stroke-width="2"/>
+    <text x="20" y="55" text-anchor="middle" fill="#EF4444" font-size="12">Alto riesgo</text>
+  </g>
+  
+  <g transform="translate(150, 30)">
+    <circle cx="20" cy="20" r="20" fill="#1F2937" stroke="#F59E0B" stroke-width="2"/>
+    <circle cx="20" cy="15" r="8" fill="#F59E0B"/>
+    <path d="M5 35 Q20 25 35 35" fill="none" stroke="#F59E0B" stroke-width="2"/>
+    <text x="20" y="55" text-anchor="middle" fill="#F59E0B" font-size="12">Medio riesgo</text>
+  </g>
+  
+  <g transform="translate(280, 50)">
+    <circle cx="20" cy="20" r="20" fill="#1F2937" stroke="#10B981" stroke-width="2"/>
+    <circle cx="20" cy="15" r="8" fill="#10B981"/>
+    <path d="M5 35 Q20 25 35 35" fill="none" stroke="#10B981" stroke-width="2"/>
+    <text x="20" y="55" text-anchor="middle" fill="#10B981" font-size="12">Bajo riesgo</text>
+  </g>
+</svg>

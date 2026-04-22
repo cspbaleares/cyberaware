@@ -17,8 +17,8 @@
 
 import * as runtime from "@prisma/client/runtime/index-browser"
 
-export type * from '../models.js'
-export type * from './prismaNamespace.js'
+export type * from '../models'
+export type * from './prismaNamespace'
 
 export const Decimal = runtime.Decimal
 
@@ -55,7 +55,21 @@ export const ModelName = {
   User: 'User',
   Role: 'Role',
   UserRole: 'UserRole',
-  AuditLog: 'AuditLog'
+  AuditLog: 'AuditLog',
+  Campaign: 'Campaign',
+  CampaignAssignment: 'CampaignAssignment',
+  TrainingCourse: 'TrainingCourse',
+  TrainingEnrollment: 'TrainingEnrollment',
+  RiskScore: 'RiskScore',
+  PhishingSimulation: 'PhishingSimulation',
+  PhishingSimulationRecipient: 'PhishingSimulationRecipient',
+  PhishingSimulationEvent: 'PhishingSimulationEvent',
+  TenantMailDomain: 'TenantMailDomain',
+  PhishingTemplate: 'PhishingTemplate',
+  OutboundMailEvent: 'OutboundMailEvent',
+  MailSuppression: 'MailSuppression',
+  TenantModuleAccess: 'TenantModuleAccess',
+  AutomationRule: 'AutomationRule'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -101,6 +115,7 @@ export const UserScalarFieldEnum = {
   lockedUntil: 'lockedUntil',
   lastLoginAt: 'lastLoginAt',
   passwordChangedAt: 'passwordChangedAt',
+  mustChangePassword: 'mustChangePassword',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
@@ -149,6 +164,254 @@ export const AuditLogScalarFieldEnum = {
 } as const
 
 export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
+
+
+export const CampaignScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  name: 'name',
+  description: 'description',
+  status: 'status',
+  startsAt: 'startsAt',
+  endsAt: 'endsAt',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CampaignScalarFieldEnum = (typeof CampaignScalarFieldEnum)[keyof typeof CampaignScalarFieldEnum]
+
+
+export const CampaignAssignmentScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  campaignId: 'campaignId',
+  userId: 'userId',
+  assignedById: 'assignedById',
+  assignedAt: 'assignedAt',
+  status: 'status',
+  completedAt: 'completedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CampaignAssignmentScalarFieldEnum = (typeof CampaignAssignmentScalarFieldEnum)[keyof typeof CampaignAssignmentScalarFieldEnum]
+
+
+export const TrainingCourseScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  title: 'title',
+  description: 'description',
+  category: 'category',
+  status: 'status',
+  estimatedMinutes: 'estimatedMinutes',
+  contentUrl: 'contentUrl',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type TrainingCourseScalarFieldEnum = (typeof TrainingCourseScalarFieldEnum)[keyof typeof TrainingCourseScalarFieldEnum]
+
+
+export const TrainingEnrollmentScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  trainingId: 'trainingId',
+  userId: 'userId',
+  assignedById: 'assignedById',
+  assignedAt: 'assignedAt',
+  status: 'status',
+  progressPct: 'progressPct',
+  completedAt: 'completedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type TrainingEnrollmentScalarFieldEnum = (typeof TrainingEnrollmentScalarFieldEnum)[keyof typeof TrainingEnrollmentScalarFieldEnum]
+
+
+export const RiskScoreScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  userId: 'userId',
+  score: 'score',
+  level: 'level',
+  calculatedAt: 'calculatedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type RiskScoreScalarFieldEnum = (typeof RiskScoreScalarFieldEnum)[keyof typeof RiskScoreScalarFieldEnum]
+
+
+export const PhishingSimulationScalarFieldEnum = {
+  templateId: 'templateId',
+  mailDomainId: 'mailDomainId',
+  id: 'id',
+  tenantId: 'tenantId',
+  name: 'name',
+  description: 'description',
+  status: 'status',
+  scheduledAt: 'scheduledAt',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type PhishingSimulationScalarFieldEnum = (typeof PhishingSimulationScalarFieldEnum)[keyof typeof PhishingSimulationScalarFieldEnum]
+
+
+export const PhishingSimulationRecipientScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  simulationId: 'simulationId',
+  userId: 'userId',
+  status: 'status',
+  assignedAt: 'assignedAt',
+  sentAt: 'sentAt',
+  openedAt: 'openedAt',
+  clickedAt: 'clickedAt',
+  submittedAt: 'submittedAt',
+  reportedAt: 'reportedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type PhishingSimulationRecipientScalarFieldEnum = (typeof PhishingSimulationRecipientScalarFieldEnum)[keyof typeof PhishingSimulationRecipientScalarFieldEnum]
+
+
+export const PhishingSimulationEventScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  simulationId: 'simulationId',
+  recipientId: 'recipientId',
+  userId: 'userId',
+  eventType: 'eventType',
+  eventAt: 'eventAt',
+  source: 'source',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
+} as const
+
+export type PhishingSimulationEventScalarFieldEnum = (typeof PhishingSimulationEventScalarFieldEnum)[keyof typeof PhishingSimulationEventScalarFieldEnum]
+
+
+export const TenantMailDomainScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  domain: 'domain',
+  type: 'type',
+  provider: 'provider',
+  status: 'status',
+  fromEmail: 'fromEmail',
+  fromName: 'fromName',
+  replyTo: 'replyTo',
+  spfExpected: 'spfExpected',
+  dkimExpected: 'dkimExpected',
+  dmarcExpected: 'dmarcExpected',
+  bounceExpected: 'bounceExpected',
+  trackingExpected: 'trackingExpected',
+  spfStatus: 'spfStatus',
+  dkimStatus: 'dkimStatus',
+  dmarcStatus: 'dmarcStatus',
+  bounceStatus: 'bounceStatus',
+  trackingStatus: 'trackingStatus',
+  lastCheckedAt: 'lastCheckedAt',
+  verificationMetadata: 'verificationMetadata',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type TenantMailDomainScalarFieldEnum = (typeof TenantMailDomainScalarFieldEnum)[keyof typeof TenantMailDomainScalarFieldEnum]
+
+
+export const PhishingTemplateScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  name: 'name',
+  subject: 'subject',
+  senderName: 'senderName',
+  senderEmail: 'senderEmail',
+  landingUrl: 'landingUrl',
+  htmlBody: 'htmlBody',
+  status: 'status',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type PhishingTemplateScalarFieldEnum = (typeof PhishingTemplateScalarFieldEnum)[keyof typeof PhishingTemplateScalarFieldEnum]
+
+
+export const OutboundMailEventScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  simulationId: 'simulationId',
+  recipientId: 'recipientId',
+  userId: 'userId',
+  provider: 'provider',
+  providerMessageId: 'providerMessageId',
+  eventType: 'eventType',
+  eventAt: 'eventAt',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
+} as const
+
+export type OutboundMailEventScalarFieldEnum = (typeof OutboundMailEventScalarFieldEnum)[keyof typeof OutboundMailEventScalarFieldEnum]
+
+
+export const MailSuppressionScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  email: 'email',
+  reason: 'reason',
+  scope: 'scope',
+  createdAt: 'createdAt'
+} as const
+
+export type MailSuppressionScalarFieldEnum = (typeof MailSuppressionScalarFieldEnum)[keyof typeof MailSuppressionScalarFieldEnum]
+
+
+export const TenantModuleAccessScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  moduleKey: 'moduleKey',
+  isEnabled: 'isEnabled',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TenantModuleAccessScalarFieldEnum = (typeof TenantModuleAccessScalarFieldEnum)[keyof typeof TenantModuleAccessScalarFieldEnum]
+
+
+export const AutomationRuleScalarFieldEnum = {
+  id: 'id',
+  tenantId: 'tenantId',
+  title: 'title',
+  description: 'description',
+  triggerType: 'triggerType',
+  actionType: 'actionType',
+  priority: 'priority',
+  targetTrainingId: 'targetTrainingId',
+  targetModuleKey: 'targetModuleKey',
+  cooldownMinutes: 'cooldownMinutes',
+  isEnabled: 'isEnabled',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AutomationRuleScalarFieldEnum = (typeof AutomationRuleScalarFieldEnum)[keyof typeof AutomationRuleScalarFieldEnum]
 
 
 export const SortOrder = {

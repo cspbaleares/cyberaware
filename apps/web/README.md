@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Web app
 
-## Getting Started
+Frontend Next.js de la plataforma.
 
-First, run the development server:
+## Desarrollo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Convención de rutas del módulo 1
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Para evitar 404s entre UI y App Router:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- La navegación visible para usuario puede usar slugs en español:
+  - `/module-1/plantillas`
+  - `/module-1/bloqueos`
+  - `/module-1/panel`
+- Las pantallas base existentes están implementadas en:
+  - `/module-1/templates`
+  - `/module-1/suppressions`
+  - `/module-1/dashboard`
 
-## Learn More
+### Regla operativa
 
-To learn more about Next.js, take a look at the following resources:
+Si se añaden enlaces nuevos en la UI del módulo 1, hay que hacer una de estas dos cosas:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. usar directamente la ruta real del directorio en `src/app`, o
+2. crear un alias explícito si el slug visible va a estar en español.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Alias actualmente necesarios
 
-## Deploy on Vercel
+Se mantienen aliases para que la UI en español no rompa:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `src/app/module-1/plantillas/page.tsx` → reexporta `../templates/page`
+- `src/app/module-1/bloqueos/page.tsx` → reexporta `../suppressions/page`
+- `src/app/module-1/panel/page.tsx` → reexporta `../dashboard/page`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Checklist antes de subir a staging
+
+- comprobar que cada `Link href="..."` apunta a una ruta existente
+- revisar `src/components/module-1-subnav.tsx`
+- probar manualmente:
+  - `/module-1`
+  - `/module-1/plantillas`
+  - `/module-1/domains`
+  - `/module-1/campaigns`
+  - `/module-1/bloqueos`
+  - `/module-1/panel`

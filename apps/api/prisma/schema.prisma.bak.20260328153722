@@ -1,0 +1,415 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Tenant {
+  outboundMailEvents OutboundMailEvent[]
+  phishingTemplates PhishingTemplate[]
+  mailDomains TenantMailDomain[]
+  phishingSimulationEvents PhishingSimulationEvent[]
+  phishingSimulations PhishingSimulation[]
+  phishingSimulationRecipients PhishingSimulationRecipient[]
+  riskScores RiskScore[]
+  id        String    @id @default(cuid())
+  name      String
+  slug      String    @unique
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  users               User[]
+  roles               Role[]
+  auditLogs           AuditLog[]
+  campaigns           Campaign[]
+  campaignAssignments CampaignAssignment[]
+  trainingEnrollments TrainingEnrollment[]
+  trainingCourses     TrainingCourse[]
+
+  @@index([slug])
+  @@index([isActive])
+  @@index([deletedAt])
+}
+
+model User {
+  outboundMailEvents OutboundMailEvent[]
+  phishingTemplatesCreated PhishingTemplate[] @relation("PhishingTemplateCreatedBy")
+  mailDomainsCreated TenantMailDomain[] @relation("TenantMailDomainCreatedBy")
+  phishingSimulationEvents PhishingSimulationEvent[]
+  phishingSimulationsCreated PhishingSimulation[] @relation("PhishingSimulationCreatedBy")
+  phishingSimulationRecipients PhishingSimulationRecipient[]
+  riskScores RiskScore[]
+  id                 String    @id @default(cuid())
+  tenantId           String
+  email              String
+  fullName           String
+  passwordHash       String
+  isActive           Boolean   @default(true)
+  isSuperAdmin       Boolean   @default(false)
+  mfaEnabled         Boolean   @default(false)
+  mfaSecretEnc       String?
+  failedLoginCount   Int       @default(0)
+  lockedUntil        DateTime?
+  lastLoginAt        DateTime?
+  passwordChangedAt  DateTime?
+  mustChangePassword Boolean   @default(false)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  deletedAt          DateTime?
+
+  tenant              Tenant               @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  memberships         UserRole[]
+  auditLogs           AuditLog[]
+  campaignAssignments CampaignAssignment[]
+  trainingEnrollments TrainingEnrollment[]
+
+  @@unique([tenantId, email])
+  @@index([tenantId])
+  @@index([email])
+  @@index([isActive])
+  @@index([deletedAt])
+}
+
+model Role {
+  id          String    @id @default(cuid())
+  tenantId    String
+  name        String
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  tenant Tenant     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  users  UserRole[]
+
+  @@unique([tenantId, name])
+  @@index([tenantId])
+  @@index([deletedAt])
+}
+
+model UserRole {
+  userId     String
+  roleId     String
+  assignedAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@id([userId, roleId])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  tenantId   String
+  userId     String?
+  action     String
+  entityType String
+  entityId   String?
+  severity   String   @default("info")
+  status     String   @default("success")
+  source     String?
+  requestId  String?
+  ipAddress  String?
+  userAgent  String?
+  metadata   Json?
+  createdAt  DateTime @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  user   User?  @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([tenantId])
+  @@index([userId])
+  @@index([action])
+  @@index([severity])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Campaign {
+  id          String    @id @default(cuid())
+  tenantId    String
+  name        String
+  description String?
+  status      String    @default("draft")
+  startsAt    DateTime?
+  endsAt      DateTime?
+  createdById String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  tenant      Tenant               @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  assignments CampaignAssignment[]
+
+  @@index([tenantId])
+  @@index([status])
+  @@index([deletedAt])
+  @@index([createdById])
+}
+
+model CampaignAssignment {
+  id           String    @id @default(cuid())
+  tenantId     String
+  campaignId   String
+  userId       String
+  assignedById String
+  assignedAt   DateTime  @default(now())
+  status       String    @default("assigned")
+  completedAt  DateTime?
+  deletedAt    DateTime?
+
+  tenant   Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([campaignId, userId])
+  @@index([tenantId])
+  @@index([campaignId])
+  @@index([userId])
+  @@index([status])
+  @@index([deletedAt])
+}
+
+model TrainingCourse {
+  id               String    @id @default(cuid())
+  tenantId         String
+  title            String
+  description      String?
+  category         String?
+  status           String    @default("draft")
+  estimatedMinutes Int?
+  contentUrl       String?
+  createdById      String
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  deletedAt        DateTime?
+
+  tenant              Tenant               @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  trainingEnrollments TrainingEnrollment[]
+
+  @@index([tenantId])
+  @@index([status])
+  @@index([category])
+  @@index([deletedAt])
+  @@index([createdById])
+}
+
+model TrainingEnrollment {
+  id           String    @id @default(cuid())
+  tenantId     String
+  trainingId   String
+  userId       String
+  assignedById String
+  assignedAt   DateTime  @default(now())
+  status       String    @default("assigned")
+  progressPct  Int       @default(0)
+  completedAt  DateTime?
+  deletedAt    DateTime?
+
+  tenant   Tenant         @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  training TrainingCourse @relation(fields: [trainingId], references: [id], onDelete: Cascade)
+  user     User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([trainingId, userId])
+  @@index([tenantId])
+  @@index([trainingId])
+  @@index([userId])
+  @@index([status])
+  @@index([deletedAt])
+}
+
+model RiskScore {
+  id          String   @id @default(cuid())
+  tenantId    String
+  userId      String
+  score       Int
+  level       String
+  calculatedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  deletedAt   DateTime?
+
+  tenant Tenant @relation(fields: [tenantId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@unique([tenantId, userId])
+  @@index([tenantId, score])
+  @@index([tenantId, level])
+  @@index([tenantId, deletedAt])
+}
+
+model PhishingSimulation {
+  outboundMailEvents OutboundMailEvent[]
+  templateId  String?
+  mailDomainId String?
+  events PhishingSimulationEvent[]
+  id          String   @id @default(cuid())
+  tenantId    String
+  name        String
+  description String?
+  status      String   @default("draft")
+  scheduledAt DateTime?
+  createdById String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  deletedAt   DateTime?
+
+  tenant     Tenant                        @relation(fields: [tenantId], references: [id])
+  createdBy  User                          @relation("PhishingSimulationCreatedBy", fields: [createdById], references: [id])
+  template   PhishingTemplate?              @relation(fields: [templateId], references: [id])
+  mailDomain TenantMailDomain?              @relation(fields: [mailDomainId], references: [id])
+  recipients PhishingSimulationRecipient[]
+
+  @@unique([tenantId, name, deletedAt])
+  @@index([tenantId, status])
+  @@index([tenantId, deletedAt])
+  @@index([tenantId, scheduledAt])
+}
+
+model PhishingSimulationRecipient {
+  outboundMailEvents OutboundMailEvent[]
+  events PhishingSimulationEvent[]
+  id             String   @id @default(cuid())
+  tenantId       String
+  simulationId   String
+  userId         String
+  status         String   @default("pending")
+  assignedAt     DateTime @default(now())
+  sentAt         DateTime?
+  openedAt       DateTime?
+  clickedAt      DateTime?
+  submittedAt    DateTime?
+  reportedAt     DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  deletedAt      DateTime?
+
+  tenant      Tenant             @relation(fields: [tenantId], references: [id])
+  simulation  PhishingSimulation @relation(fields: [simulationId], references: [id])
+  user        User               @relation(fields: [userId], references: [id])
+
+  @@unique([simulationId, userId])
+  @@index([tenantId, simulationId])
+  @@index([tenantId, userId])
+  @@index([tenantId, status])
+  @@index([tenantId, deletedAt])
+}
+
+
+
+model PhishingSimulationEvent {
+  id           String   @id @default(cuid())
+  tenantId     String
+  simulationId String
+  recipientId  String
+  userId       String
+  eventType    String
+  eventAt      DateTime @default(now())
+  source       String?
+  ipAddress    String?
+  userAgent    String?
+  metadata     Json?
+  createdAt    DateTime @default(now())
+
+  tenant      Tenant                      @relation(fields: [tenantId], references: [id])
+  simulation  PhishingSimulation          @relation(fields: [simulationId], references: [id])
+  recipient   PhishingSimulationRecipient @relation(fields: [recipientId], references: [id])
+  user        User                        @relation(fields: [userId], references: [id])
+
+  @@index([tenantId, userId, eventType])
+  @@index([tenantId, simulationId, eventType])
+  @@index([tenantId, recipientId, eventType])
+  @@index([tenantId, eventAt])
+}
+
+model TenantMailDomain {
+  id                   String   @id @default(cuid())
+  tenantId             String
+  domain               String
+  type                 String
+  provider             String?
+  status               String   @default("draft")
+  fromEmail            String?
+  fromName             String?
+  replyTo              String?
+  spfExpected          String?
+  dkimExpected         String?
+  dmarcExpected        String?
+  bounceExpected       String?
+  trackingExpected     String?
+  spfStatus            String   @default("pending")
+  dkimStatus           String   @default("pending")
+  dmarcStatus          String   @default("pending")
+  bounceStatus         String   @default("pending")
+  trackingStatus       String   @default("pending")
+  lastCheckedAt        DateTime?
+  verificationMetadata Json?
+  createdById          String
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  deletedAt            DateTime?
+
+  tenant      Tenant                @relation(fields: [tenantId], references: [id])
+  createdBy   User                  @relation("TenantMailDomainCreatedBy", fields: [createdById], references: [id])
+  simulations PhishingSimulation[]
+
+  @@unique([tenantId, domain, type, deletedAt])
+  @@index([tenantId, type])
+  @@index([tenantId, status])
+  @@index([tenantId, deletedAt])
+}
+
+model PhishingTemplate {
+  id          String   @id @default(cuid())
+  tenantId    String
+  name        String
+  subject     String
+  senderName  String?
+  senderEmail String?
+  landingUrl  String?
+  htmlBody    String
+  status      String   @default("draft")
+  createdById String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  deletedAt   DateTime?
+
+  tenant      Tenant                @relation(fields: [tenantId], references: [id])
+  createdBy   User                  @relation("PhishingTemplateCreatedBy", fields: [createdById], references: [id])
+  simulations PhishingSimulation[]
+
+  @@unique([tenantId, name, deletedAt])
+  @@index([tenantId, status])
+  @@index([tenantId, deletedAt])
+}
+
+model OutboundMailEvent {
+  id                String   @id @default(cuid())
+  tenantId          String
+  simulationId      String
+  recipientId       String
+  userId            String
+  provider          String?
+  providerMessageId String?
+  eventType         String
+  eventAt           DateTime @default(now())
+  metadata          Json?
+  createdAt         DateTime @default(now())
+
+  tenant     Tenant                      @relation(fields: [tenantId], references: [id])
+  simulation PhishingSimulation          @relation(fields: [simulationId], references: [id])
+  recipient  PhishingSimulationRecipient @relation(fields: [recipientId], references: [id])
+  user       User                        @relation(fields: [userId], references: [id])
+
+  @@index([tenantId, simulationId, eventType])
+  @@index([tenantId, recipientId, eventType])
+  @@index([tenantId, userId, eventType])
+  @@index([tenantId, providerMessageId])
+  @@index([tenantId, eventAt])
+}

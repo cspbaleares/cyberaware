@@ -10,8 +10,8 @@
  */
 
 import type * as runtime from "@prisma/client/runtime/client"
-import * as $Enums from "./enums.js"
-import type * as Prisma from "./internal/prismaNamespace.js"
+import * as $Enums from "./enums"
+import type * as Prisma from "./internal/prismaNamespace"
 
 
 export type StringFilter<$PrismaModel = never> = {
@@ -226,6 +226,67 @@ export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
   _max?: Prisma.NestedJsonNullableFilter<$PrismaModel>
 }
 
+export type IntNullableFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.IntFieldRefInput<$PrismaModel> | null
+  in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null
+  notIn?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null
+  lt?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  lte?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  gt?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  gte?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedIntNullableFilter<$PrismaModel> | number | null
+}
+
+export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.IntFieldRefInput<$PrismaModel> | null
+  in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null
+  notIn?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null
+  lt?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  lte?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  gt?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  gte?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _avg?: Prisma.NestedFloatNullableFilter<$PrismaModel>
+  _sum?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedIntNullableFilter<$PrismaModel>
+}
+
+export type EnumMailSuppressionReasonFilter<$PrismaModel = never> = {
+  equals?: $Enums.MailSuppressionReason | Prisma.EnumMailSuppressionReasonFieldRefInput<$PrismaModel>
+  in?: $Enums.MailSuppressionReason[] | Prisma.ListEnumMailSuppressionReasonFieldRefInput<$PrismaModel>
+  notIn?: $Enums.MailSuppressionReason[] | Prisma.ListEnumMailSuppressionReasonFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumMailSuppressionReasonFilter<$PrismaModel> | $Enums.MailSuppressionReason
+}
+
+export type EnumMailSuppressionScopeFilter<$PrismaModel = never> = {
+  equals?: $Enums.MailSuppressionScope | Prisma.EnumMailSuppressionScopeFieldRefInput<$PrismaModel>
+  in?: $Enums.MailSuppressionScope[] | Prisma.ListEnumMailSuppressionScopeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.MailSuppressionScope[] | Prisma.ListEnumMailSuppressionScopeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumMailSuppressionScopeFilter<$PrismaModel> | $Enums.MailSuppressionScope
+}
+
+export type EnumMailSuppressionReasonWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.MailSuppressionReason | Prisma.EnumMailSuppressionReasonFieldRefInput<$PrismaModel>
+  in?: $Enums.MailSuppressionReason[] | Prisma.ListEnumMailSuppressionReasonFieldRefInput<$PrismaModel>
+  notIn?: $Enums.MailSuppressionReason[] | Prisma.ListEnumMailSuppressionReasonFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumMailSuppressionReasonWithAggregatesFilter<$PrismaModel> | $Enums.MailSuppressionReason
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumMailSuppressionReasonFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumMailSuppressionReasonFilter<$PrismaModel>
+}
+
+export type EnumMailSuppressionScopeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.MailSuppressionScope | Prisma.EnumMailSuppressionScopeFieldRefInput<$PrismaModel>
+  in?: $Enums.MailSuppressionScope[] | Prisma.ListEnumMailSuppressionScopeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.MailSuppressionScope[] | Prisma.ListEnumMailSuppressionScopeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumMailSuppressionScopeWithAggregatesFilter<$PrismaModel> | $Enums.MailSuppressionScope
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumMailSuppressionScopeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumMailSuppressionScopeFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -422,6 +483,67 @@ export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
   gt?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel>
   gte?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel>
   not?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel> | Prisma.JsonNullValueFilter
+}
+
+export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.IntFieldRefInput<$PrismaModel> | null
+  in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null
+  notIn?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null
+  lt?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  lte?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  gt?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  gte?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _avg?: Prisma.NestedFloatNullableFilter<$PrismaModel>
+  _sum?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedIntNullableFilter<$PrismaModel>
+}
+
+export type NestedFloatNullableFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.FloatFieldRefInput<$PrismaModel> | null
+  in?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel> | null
+  notIn?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel> | null
+  lt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  lte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedFloatNullableFilter<$PrismaModel> | number | null
+}
+
+export type NestedEnumMailSuppressionReasonFilter<$PrismaModel = never> = {
+  equals?: $Enums.MailSuppressionReason | Prisma.EnumMailSuppressionReasonFieldRefInput<$PrismaModel>
+  in?: $Enums.MailSuppressionReason[] | Prisma.ListEnumMailSuppressionReasonFieldRefInput<$PrismaModel>
+  notIn?: $Enums.MailSuppressionReason[] | Prisma.ListEnumMailSuppressionReasonFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumMailSuppressionReasonFilter<$PrismaModel> | $Enums.MailSuppressionReason
+}
+
+export type NestedEnumMailSuppressionScopeFilter<$PrismaModel = never> = {
+  equals?: $Enums.MailSuppressionScope | Prisma.EnumMailSuppressionScopeFieldRefInput<$PrismaModel>
+  in?: $Enums.MailSuppressionScope[] | Prisma.ListEnumMailSuppressionScopeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.MailSuppressionScope[] | Prisma.ListEnumMailSuppressionScopeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumMailSuppressionScopeFilter<$PrismaModel> | $Enums.MailSuppressionScope
+}
+
+export type NestedEnumMailSuppressionReasonWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.MailSuppressionReason | Prisma.EnumMailSuppressionReasonFieldRefInput<$PrismaModel>
+  in?: $Enums.MailSuppressionReason[] | Prisma.ListEnumMailSuppressionReasonFieldRefInput<$PrismaModel>
+  notIn?: $Enums.MailSuppressionReason[] | Prisma.ListEnumMailSuppressionReasonFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumMailSuppressionReasonWithAggregatesFilter<$PrismaModel> | $Enums.MailSuppressionReason
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumMailSuppressionReasonFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumMailSuppressionReasonFilter<$PrismaModel>
+}
+
+export type NestedEnumMailSuppressionScopeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.MailSuppressionScope | Prisma.EnumMailSuppressionScopeFieldRefInput<$PrismaModel>
+  in?: $Enums.MailSuppressionScope[] | Prisma.ListEnumMailSuppressionScopeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.MailSuppressionScope[] | Prisma.ListEnumMailSuppressionScopeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumMailSuppressionScopeWithAggregatesFilter<$PrismaModel> | $Enums.MailSuppressionScope
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumMailSuppressionScopeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumMailSuppressionScopeFilter<$PrismaModel>
 }
 
 

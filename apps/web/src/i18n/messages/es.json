@@ -1,0 +1,204 @@
+{
+  "metadata": {
+    "title": "CyberAware - Plataforma de Security Awareness",
+    "description": "Reduce el riesgo humano con simulaciones de phishing, formación personalizada y automatización inteligente."
+  },
+  "navigation": {
+    "home": "Inicio",
+    "dashboard": "Dashboard",
+    "login": "Acceder",
+    "logout": "Salir",
+    "profile": "Perfil",
+    "modules": {
+      "simulation": "Simulación",
+      "risk": "Riesgo Humano",
+      "training": "Formación",
+      "automation": "Automatización"
+    },
+    "platform": "Plataforma"
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "Plataforma líder en Security Awareness",
+      "title": "Reduce el riesgo humano en tu organización",
+      "description": "CyberAware combina simulaciones de phishing, análisis de riesgo y formación personalizada para crear una cultura de seguridad sólida y medible.",
+      "ctaPrimary": "Comenzar ahora",
+      "ctaSecondary": "Solicitar demo"
+    },
+    "trust": {
+      "title": "Confiado por equipos de seguridad en",
+      "industries": {
+        "tech": "Tecnología",
+        "health": "Sanidad",
+        "finance": "Finanzas",
+        "education": "Educación"
+      }
+    },
+    "features": {
+      "title": "Todo lo que necesitas en una plataforma",
+      "description": "Cuatro módulos integrados que trabajan juntos para reducir el riesgo humano de forma continua.",
+      "phishing": {
+        "title": "Simulaciones de Phishing",
+        "description": "Campañas realistas para medir y mejorar la resiliencia de tu equipo ante ataques."
+      },
+      "risk": {
+        "title": "Análisis de Riesgo Humano",
+        "description": "Identifica usuarios vulnerables y prioriza intervenciones basadas en datos."
+      },
+      "training": {
+        "title": "Formación Personalizada",
+        "description": "Cursos adaptativos que se ajustan al nivel de riesgo de cada empleado."
+      },
+      "automation": {
+        "title": "Automatización Inteligente",
+        "description": "Reglas automáticas que responden a eventos de seguridad en tiempo real."
+      }
+    },
+    "cta": {
+      "title": "¿Listo para fortalecer tu seguridad?",
+      "description": "Únete a las organizaciones que ya están reduciendo su riesgo humano con CyberAware.",
+      "button": "Acceder a la plataforma"
+    }
+  },
+  "dashboard": {
+    "welcome": "¡Hola, {name}!",
+    "welcomeText": "Bienvenido a {tenant}. Aquí tienes un resumen de la actividad reciente.",
+    "stats": {
+      "activeUsers": "Usuarios activos",
+      "campaignsThisMonth": "Campañas este mes",
+      "trainingCompleted": "Formación completada",
+      "avgRisk": "Riesgo promedio"
+    },
+    "quickActions": {
+      "title": "Acciones rápidas",
+      "description": "Tareas comunes para gestionar tu seguridad",
+      "newCampaign": "Nueva campaña",
+      "viewRisks": "Ver riesgos",
+      "assignCourse": "Asignar curso",
+      "createRule": "Crear regla"
+    },
+    "modules": {
+      "title": "Módulos disponibles",
+      "description": "Accede a las herramientas de tu suite",
+      "openModule": "Abrir módulo"
+    }
+  },
+  "profile": {
+    "title": "Perfil de Usuario",
+    "description": "Gestiona tu información personal y preferencias",
+    "personalInfo": {
+      "title": "Información Personal",
+      "firstName": "Nombre",
+      "lastName": "Apellidos",
+      "email": "Correo Electrónico",
+      "edit": "Editar Perfil",
+      "save": "Guardar Cambios"
+    },
+    "account": {
+      "title": "Información de Cuenta",
+      "organization": "Organización",
+      "slug": "Slug",
+      "memberSince": "Miembro desde",
+      "lastLogin": "Último acceso"
+    },
+    "security": {
+      "title": "Seguridad",
+      "password": "Contraseña",
+      "lastUpdated": "Última actualización",
+      "changePassword": "Cambiar Contraseña",
+      "twoFactor": "Autenticación de Dos Factores",
+      "twoFactorDesc": "Añade una capa extra de seguridad a tu cuenta",
+      "setup2FA": "Configurar 2FA"
+    },
+    "modules": {
+      "title": "Módulos Habilitados",
+      "active": "Activo"
+    },
+    "notifications": {
+      "title": "Notificaciones",
+      "securityAlerts": "Alertas de seguridad",
+      "securityAlertsDesc": "Notificaciones sobre eventos de seguridad",
+      "weeklyReports": "Reportes semanales",
+      "weeklyReportsDesc": "Resumen semanal de actividad",
+      "platformUpdates": "Actualizaciones de plataforma",
+      "platformUpdatesDesc": "Nuevas funciones y mejoras",
+      "marketingEmails": "Emails de marketing",
+      "marketingEmailsDesc": "Promociones y novedades"
+    }
+  },
+  "analytics": {
+    "title": "Dashboard de Analytics",
+    "description": "Resumen de métricas y estadísticas de seguridad",
+    "metrics": {
+      "emailsSent": "Emails de Phishing Enviados",
+      "clickRate": "Tasa de Clics",
+      "highRiskUsers": "Usuarios en Riesgo Alto",
+      "trainingCompleted": "Formación Completada"
+    },
+    "charts": {
+      "phishingActivity": "Actividad de Phishing",
+      "phishingDesc": "Emails enviados vs tasas de clic (últimos 7 días)",
+      "riskTrend": "Tendencia de Riesgo",
+      "riskDesc": "Puntuación media de riesgo (últimos 7 días)",
+      "riskDistribution": "Distribución de Riesgo",
+      "trainingProgress": "Progreso de Formación",
+      "automation": "Automatización"
+    },
+    "activity": {
+      "title": "Actividad Reciente",
+      "description": "Últimos eventos de seguridad detectados",
+      "event": "Evento",
+      "user": "Usuario",
+      "module": "Módulo",
+      "date": "Fecha",
+      "status": "Estado"
+    }
+  },
+  "common": {
+    "loading": "Cargando...",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "create": "Crear",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "actions": "Acciones",
+    "status": {
+      "active": "Activo",
+      "inactive": "Inactivo",
+      "pending": "Pendiente",
+      "completed": "Completado",
+      "error": "Error",
+      "success": "Éxito",
+      "warning": "Advertencia",
+      "info": "Info"
+    },
+    "roles": {
+      "superAdmin": "Super Admin",
+      "platformAdmin": "Administrador de Plataforma",
+      "tenantAdmin": "Administrador de Tenant",
+      "user": "Usuario",
+      "analyst": "Analista"
+    }
+  },
+  "errors": {
+    "404": {
+      "title": "Página no encontrada",
+      "description": "La página que buscas no existe o ha sido movida.",
+      "back": "Volver atrás"
+    },
+    "500": {
+      "title": "Error del servidor",
+      "description": "Algo salió mal. Por favor, inténtalo de nuevo más tarde.",
+      "retry": "Reintentar"
+    },
+    "offline": {
+      "title": "Sin conexión a Internet",
+      "description": "Parece que has perdido la conexión. Algunas funciones están disponibles offline.",
+      "refresh": "Intentar de nuevo",
+      "home": "Volver al inicio"
+    }
+  }
+}
