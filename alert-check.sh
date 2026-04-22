@@ -3,7 +3,7 @@
 # Sistema de alertas para CyberAware
 # Envía notificaciones cuando se detectan problemas
 
-ALERT_EMAIL="admin@cspcybersecurity.com"
+ALERT_EMAIL="incidentes@cspbaleares.com"
 ALERT_LOG="/var/log/cyberaware-alerts.log"
 
 # Función para enviar alerta

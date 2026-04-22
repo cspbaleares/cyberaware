@@ -5,6 +5,7 @@
 
 REPORT_FILE="/var/log/cyberaware-security-report-$(date +%Y%m%d).log"
 ATTEMPTS_LOG="/var/log/cyberaware-attacks.log"
+ALERT_EMAIL="incidentes@cspbaleares.com"
 
 echo "=== INFORME DE SEGURIDAD - $(date) ===" > $REPORT_FILE
 echo "" >> $REPORT_FILE
@@ -57,7 +58,12 @@ echo "Estado: $(if [ $ATTACK_COUNT -gt 1000 ]; then echo "⚠️ ALTO"; elif [ $
 
 echo "Informe guardado en: $REPORT_FILE"
 
-# Si hay muchos ataques, enviar alerta
+# Enviar informe por email
+if command -v mail &> /dev/null; then
+    mail -s "[CyberAware] Informe de Seguridad Diario - $(date +%Y-%m-%d)" $ALERT_EMAIL < $REPORT_FILE
+fi
+
+# Si hay muchos ataques, enviar alerta adicional
 if [ $ATTACK_COUNT -gt 1000 ]; then
-    echo "ALERTA: Alto número de intentos de ataque ($ATTACK_COUNT)" | mail -s "[CyberAware] Alerta de Seguridad" admin@cspcybersecurity.com 2>/dev/null || true
+    echo "ALERTA: Alto número de intentos de ataque ($ATTACK_COUNT) en las últimas 24h. Revise el informe adjunto." | mail -s "[CyberAware] ALERTA: Alto número de ataques detectados" $ALERT_EMAIL 2>/dev/null || true
 fi
