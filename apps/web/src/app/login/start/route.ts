@@ -47,21 +47,26 @@ export async function POST(request: Request) {
     }
 
     if (payload.accessToken) {
-      // Decodificar token para verificar si es admin
+      // Decodificar token para obtener tenantSlug y roles
+      let tenantSlugFromToken = "";
       let isAdmin = false;
       try {
         const tokenPayload = JSON.parse(atob(payload.accessToken.split('.')[1]));
+        tenantSlugFromToken = tokenPayload.tenantSlug || "";
         isAdmin = tokenPayload.isSuperAdmin || 
           (tokenPayload.roles || []).some((role: string) => 
             role.includes("admin") || role === "platform_admin" || role === "tenant_admin"
           );
       } catch {
-        // Si no se puede decodificar, asumir no admin
+        // Si no se puede decodificar, usar valores por defecto
       }
 
       const baseUrl = getRequestBaseUrl(request);
-      const redirectUrl = isAdmin ? "/admin" : "/";
-      const res = NextResponse.redirect(new URL(redirectUrl, baseUrl), 303);
+      // Redirigir al dashboard del tenant específico
+      const redirectPath = tenantSlugFromToken 
+        ? (isAdmin ? `/${tenantSlugFromToken}/admin` : `/${tenantSlugFromToken}/dashboard`)
+        : (isAdmin ? "/admin" : "/");
+      const res = NextResponse.redirect(new URL(redirectPath, baseUrl), 303);
       res.cookies.set("platform_access_token", payload.accessToken, {
         httpOnly: true,
         sameSite: "lax",
