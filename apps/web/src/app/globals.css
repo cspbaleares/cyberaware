@@ -1884,16 +1884,37 @@ body {
   right: 0;
   bottom: 0;
   background: var(--bg-primary);
-  z-index: 9999;
+  z-index: 99999 !important;
   padding: 1rem;
   overflow-y: auto;
   border-top: 1px solid var(--border-default);
+  isolation: isolate;
 }
 
 /* Show menu when checkbox is checked */
 .mobile-menu-checkbox:checked ~ .mobile-menu-dropdown {
-  display: block;
+  display: block !important;
   animation: slideDownMenu 0.2s ease-out;
+}
+
+/* Force show on mobile when checked */
+@media (max-width: 1024px) {
+  .mobile-menu-checkbox:checked ~ .mobile-menu-dropdown {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 99999 !important;
+  }
+  
+  /* Asegurar que el menú esté por encima del contenido */
+  .app-main {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .top-nav {
+    z-index: 99999 !important;
+  }
 }
 
 @keyframes slideDownMenu {

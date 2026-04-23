@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { getCurrentSession } from "@/lib/server-session";
 import { 
   LayoutDashboard, 
   Shield, 
@@ -11,7 +13,27 @@ import {
   Server
 } from "lucide-react";
 
-export default function AdminPage() {
+// Forzar renderizado dinámico
+export const dynamic = "force-dynamic";
+
+export default async function AdminPage() {
+  const session = await getCurrentSession();
+
+  // Si no hay sesión, redirigir a login
+  if (!session) {
+    redirect("/login");
+  }
+
+  // Verificar que sea admin
+  const isAdmin = session.isSuperAdmin || 
+    session.roles?.some((role: string) => 
+      role.includes("admin") || role === "platform_admin" || role === "tenant_admin"
+    );
+
+  if (!isAdmin) {
+    redirect("/");
+  }
+
   const adminModules = [
     {
       title: "Dashboard de Métricas",
@@ -65,7 +87,7 @@ export default function AdminPage() {
   ];
 
   return (
-    <div style={{ padding: "2rem", maxWidth: "1200px", margin: "0 auto" }}>
+    <div>
       <div style={{ marginBottom: "2rem" }}>
         <h1 style={{ fontSize: "2rem", fontWeight: 700, marginBottom: "0.5rem" }}>
           Panel de Administración
@@ -97,14 +119,6 @@ export default function AdminPage() {
                 alignItems: "flex-start",
                 gap: "1rem",
                 transition: "transform 0.2s, box-shadow 0.2s",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-4px)";
-                e.currentTarget.style.boxShadow = "0 8px 30px rgba(0,0,0,0.2)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "none";
               }}
             >
               <div
@@ -153,7 +167,10 @@ export default function AdminPage() {
   );
 }
 
-function StatusItem({ label, status }: { label: string; status: "online" | "offline" | "warning" }) {
+function StatusItem({ label, status }: { 
+  label: string; 
+  status: "online" | "offline" | "warning"; 
+}) {
   const colors = {
     online: "#22c55e",
     offline: "#ef4444",

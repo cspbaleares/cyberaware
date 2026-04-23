@@ -47,8 +47,21 @@ export async function POST(request: Request) {
     }
 
     if (payload.accessToken) {
+      // Decodificar token para verificar si es admin
+      let isAdmin = false;
+      try {
+        const tokenPayload = JSON.parse(atob(payload.accessToken.split('.')[1]));
+        isAdmin = tokenPayload.isSuperAdmin || 
+          (tokenPayload.roles || []).some((role: string) => 
+            role.includes("admin") || role === "platform_admin" || role === "tenant_admin"
+          );
+      } catch {
+        // Si no se puede decodificar, asumir no admin
+      }
+
       const baseUrl = getRequestBaseUrl(request);
-      const res = NextResponse.redirect(new URL("/", baseUrl), 303);
+      const redirectUrl = isAdmin ? "/admin" : "/";
+      const res = NextResponse.redirect(new URL(redirectUrl, baseUrl), 303);
       res.cookies.set("platform_access_token", payload.accessToken, {
         httpOnly: true,
         sameSite: "lax",

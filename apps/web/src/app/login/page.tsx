@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { getCurrentSession } from "@/lib/server-session";
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
@@ -12,6 +14,21 @@ export default async function LoginPage({
 }: {
   searchParams: SearchParams;
 }) {
+  // Si ya está logueado, redirigir según rol
+  const session = await getCurrentSession();
+  if (session) {
+    const isAdmin = session.isSuperAdmin || 
+      session.roles?.some((role: string) => 
+        role.includes("admin") || role === "platform_admin" || role === "tenant_admin"
+      );
+    
+    if (isAdmin) {
+      redirect("/admin");
+    } else {
+      redirect("/");
+    }
+  }
+
   const params = await searchParams;
 
   const tenantSlug = getValue(params.tenantSlug) || "";
