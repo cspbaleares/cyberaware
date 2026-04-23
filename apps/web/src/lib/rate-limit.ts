@@ -18,7 +18,7 @@ export async function rateLimit(
   const { windowMs, maxRequests } = { ...defaultConfig, ...config };
   
   // Obtener IP del cliente
-  const ip = request.ip || "anonymous";
+  const ip = request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || "anonymous";
   const key = `ratelimit:${ip}:${request.nextUrl.pathname}`;
   
   try {
@@ -34,7 +34,7 @@ export async function rateLimit(
     multi.pExpire(key, windowMs);
     
     const results = await multi.exec();
-    const currentCount = (results?.[1] as number) || 0;
+    const currentCount = Number(results?.[1]) || 0;
     
     const remaining = Math.max(0, maxRequests - currentCount);
     const success = currentCount < maxRequests;

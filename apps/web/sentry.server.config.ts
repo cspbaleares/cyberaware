@@ -13,9 +13,6 @@ Sentry.init({
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
 
-  // Enable performance monitoring
-  enableTracing: true,
-
   // Capture uncaught exceptions
   onFatalError(error) {
     console.error("Fatal error captured by Sentry:", error);

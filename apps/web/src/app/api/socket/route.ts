@@ -1,21 +1,24 @@
 import { Server as NetServer } from "http";
 import { Server as SocketIOServer } from "socket.io";
-import { NextApiRequest } from "next";
-import { NextApiResponseServerIO } from "./types";
+import { NextRequest } from "next/server";
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+// Export config for route segment
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 let io: SocketIOServer | null = null;
 
-export default function handler(req: NextApiRequest, res: NextApiResponseServerIO) {
+export async function GET(req: NextRequest) {
   if (!io) {
     console.log("Initializing Socket.io server...");
     
-    const httpServer: NetServer = (res.socket as any).server;
+    // @ts-ignore - socket is available on the response
+    const httpServer: NetServer = (req as any).socket?.server;
+    
+    if (!httpServer) {
+      return new Response("Socket server not available", { status: 500 });
+    }
+    
     io = new SocketIOServer(httpServer, {
       path: "/api/socket",
       addTrailingSlash: false,
@@ -52,7 +55,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponseServerI
     });
   }
 
-  res.end();
+  return new Response("Socket server running", { status: 200 });
 }
 
 // Helper para emitir eventos desde otros lugares

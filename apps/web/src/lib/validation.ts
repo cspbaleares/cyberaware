@@ -55,7 +55,7 @@ export const automationRuleSchema = z.object({
   })),
   actions: z.array(z.object({
     type: z.enum(["send_email", "enroll_course", "notify_admin", "block_user"]),
-    params: z.record(z.any()),
+    params: z.record(z.string(), z.any()),
   })).min(1, "Debe tener al menos una acción"),
   enabled: z.boolean().default(true),
 });
