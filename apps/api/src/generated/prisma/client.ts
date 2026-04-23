@@ -134,3 +134,8 @@ export type TenantModuleAccess = Prisma.TenantModuleAccessModel
  * 
  */
 export type AutomationRule = Prisma.AutomationRuleModel
+/**
+ * Model Invitation
+ * 
+ */
+export type Invitation = Prisma.InvitationModel

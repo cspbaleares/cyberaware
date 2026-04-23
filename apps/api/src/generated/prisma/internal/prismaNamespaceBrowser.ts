@@ -69,7 +69,8 @@ export const ModelName = {
   OutboundMailEvent: 'OutboundMailEvent',
   MailSuppression: 'MailSuppression',
   TenantModuleAccess: 'TenantModuleAccess',
-  AutomationRule: 'AutomationRule'
+  AutomationRule: 'AutomationRule',
+  Invitation: 'Invitation'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -412,6 +413,22 @@ export const AutomationRuleScalarFieldEnum = {
 } as const
 
 export type AutomationRuleScalarFieldEnum = (typeof AutomationRuleScalarFieldEnum)[keyof typeof AutomationRuleScalarFieldEnum]
+
+
+export const InvitationScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  tenantId: 'tenantId',
+  role: 'role',
+  token: 'token',
+  expiresAt: 'expiresAt',
+  usedAt: 'usedAt',
+  createdBy: 'createdBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type InvitationScalarFieldEnum = (typeof InvitationScalarFieldEnum)[keyof typeof InvitationScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -22,17 +22,24 @@ export default function AdminPage() {
     },
     {
       title: "Gestión de Usuarios",
-      description: "Administrar usuarios y permisos",
+      description: "Administrar usuarios, invitar nuevos miembros y gestionar permisos",
       icon: <Users size={32} />,
       href: "/admin/users",
       color: "#8b5cf6",
+    },
+    {
+      title: "Logs de Auditoría",
+      description: "Registro de todas las acciones en la plataforma",
+      icon: <Shield size={32} />,
+      href: "/admin/audit",
+      color: "#22c55e",
     },
     {
       title: "Configuración de Seguridad",
       description: "CSP, rate limiting y headers",
       icon: <Shield size={32} />,
       href: "/admin/security",
-      color: "#22c55e",
+      color: "#10b981",
     },
     {
       title: "Caché y Redis",

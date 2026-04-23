@@ -22,6 +22,7 @@ import { SimulationDispatchModule } from './simulation-dispatch/simulation-dispa
 import { MailSuppressionsModule } from './mail-suppressions/mail-suppressions.module';
 import { PlatformModule } from './platform/platform.module';
 import { AutomationRulesModule } from './automation-rules/automation-rules.module';
+import { InvitationsModule } from './invitations/invitations.module';
 
 @Module({
   imports: [
@@ -49,6 +50,7 @@ import { AutomationRulesModule } from './automation-rules/automation-rules.modul
     MailSuppressionsModule,
     PlatformModule,
     AutomationRulesModule,
+    InvitationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

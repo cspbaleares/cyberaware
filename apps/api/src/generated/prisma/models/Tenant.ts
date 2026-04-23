@@ -215,6 +215,7 @@ export type TenantWhereInput = {
   trainingCourses?: Prisma.TrainingCourseListRelationFilter
   tenantModuleAccesses?: Prisma.TenantModuleAccessListRelationFilter
   automationRules?: Prisma.AutomationRuleListRelationFilter
+  invitations?: Prisma.InvitationListRelationFilter
 }
 
 export type TenantOrderByWithRelationInput = {
@@ -242,6 +243,7 @@ export type TenantOrderByWithRelationInput = {
   trainingCourses?: Prisma.TrainingCourseOrderByRelationAggregateInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessOrderByRelationAggregateInput
   automationRules?: Prisma.AutomationRuleOrderByRelationAggregateInput
+  invitations?: Prisma.InvitationOrderByRelationAggregateInput
 }
 
 export type TenantWhereUniqueInput = Prisma.AtLeast<{
@@ -272,6 +274,7 @@ export type TenantWhereUniqueInput = Prisma.AtLeast<{
   trainingCourses?: Prisma.TrainingCourseListRelationFilter
   tenantModuleAccesses?: Prisma.TenantModuleAccessListRelationFilter
   automationRules?: Prisma.AutomationRuleListRelationFilter
+  invitations?: Prisma.InvitationListRelationFilter
 }, "id" | "slug">
 
 export type TenantOrderByWithAggregationInput = {
@@ -325,6 +328,7 @@ export type TenantCreateInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateInput = {
@@ -352,6 +356,7 @@ export type TenantUncheckedCreateInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUpdateInput = {
@@ -379,6 +384,7 @@ export type TenantUpdateInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateInput = {
@@ -406,6 +412,7 @@ export type TenantUncheckedUpdateInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateManyInput = {
@@ -727,6 +734,20 @@ export type TenantUpdateOneRequiredWithoutAutomationRulesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.TenantUpdateToOneWithWhereWithoutAutomationRulesInput, Prisma.TenantUpdateWithoutAutomationRulesInput>, Prisma.TenantUncheckedUpdateWithoutAutomationRulesInput>
 }
 
+export type TenantCreateNestedOneWithoutInvitationsInput = {
+  create?: Prisma.XOR<Prisma.TenantCreateWithoutInvitationsInput, Prisma.TenantUncheckedCreateWithoutInvitationsInput>
+  connectOrCreate?: Prisma.TenantCreateOrConnectWithoutInvitationsInput
+  connect?: Prisma.TenantWhereUniqueInput
+}
+
+export type TenantUpdateOneRequiredWithoutInvitationsNestedInput = {
+  create?: Prisma.XOR<Prisma.TenantCreateWithoutInvitationsInput, Prisma.TenantUncheckedCreateWithoutInvitationsInput>
+  connectOrCreate?: Prisma.TenantCreateOrConnectWithoutInvitationsInput
+  upsert?: Prisma.TenantUpsertWithoutInvitationsInput
+  connect?: Prisma.TenantWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TenantUpdateToOneWithWhereWithoutInvitationsInput, Prisma.TenantUpdateWithoutInvitationsInput>, Prisma.TenantUncheckedUpdateWithoutInvitationsInput>
+}
+
 export type TenantCreateWithoutUsersInput = {
   id?: string
   name: string
@@ -751,6 +772,7 @@ export type TenantCreateWithoutUsersInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutUsersInput = {
@@ -777,6 +799,7 @@ export type TenantUncheckedCreateWithoutUsersInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutUsersInput = {
@@ -819,6 +842,7 @@ export type TenantUpdateWithoutUsersInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutUsersInput = {
@@ -845,6 +869,7 @@ export type TenantUncheckedUpdateWithoutUsersInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutRolesInput = {
@@ -871,6 +896,7 @@ export type TenantCreateWithoutRolesInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutRolesInput = {
@@ -897,6 +923,7 @@ export type TenantUncheckedCreateWithoutRolesInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutRolesInput = {
@@ -939,6 +966,7 @@ export type TenantUpdateWithoutRolesInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutRolesInput = {
@@ -965,6 +993,7 @@ export type TenantUncheckedUpdateWithoutRolesInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutAuditLogsInput = {
@@ -991,6 +1020,7 @@ export type TenantCreateWithoutAuditLogsInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutAuditLogsInput = {
@@ -1017,6 +1047,7 @@ export type TenantUncheckedCreateWithoutAuditLogsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutAuditLogsInput = {
@@ -1059,6 +1090,7 @@ export type TenantUpdateWithoutAuditLogsInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutAuditLogsInput = {
@@ -1085,6 +1117,7 @@ export type TenantUncheckedUpdateWithoutAuditLogsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutCampaignsInput = {
@@ -1111,6 +1144,7 @@ export type TenantCreateWithoutCampaignsInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutCampaignsInput = {
@@ -1137,6 +1171,7 @@ export type TenantUncheckedCreateWithoutCampaignsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutCampaignsInput = {
@@ -1179,6 +1214,7 @@ export type TenantUpdateWithoutCampaignsInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutCampaignsInput = {
@@ -1205,6 +1241,7 @@ export type TenantUncheckedUpdateWithoutCampaignsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutCampaignAssignmentsInput = {
@@ -1231,6 +1268,7 @@ export type TenantCreateWithoutCampaignAssignmentsInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutCampaignAssignmentsInput = {
@@ -1257,6 +1295,7 @@ export type TenantUncheckedCreateWithoutCampaignAssignmentsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutCampaignAssignmentsInput = {
@@ -1299,6 +1338,7 @@ export type TenantUpdateWithoutCampaignAssignmentsInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutCampaignAssignmentsInput = {
@@ -1325,6 +1365,7 @@ export type TenantUncheckedUpdateWithoutCampaignAssignmentsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutTrainingCoursesInput = {
@@ -1351,6 +1392,7 @@ export type TenantCreateWithoutTrainingCoursesInput = {
   trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutTrainingCoursesInput = {
@@ -1377,6 +1419,7 @@ export type TenantUncheckedCreateWithoutTrainingCoursesInput = {
   trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutTrainingCoursesInput = {
@@ -1419,6 +1462,7 @@ export type TenantUpdateWithoutTrainingCoursesInput = {
   trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutTrainingCoursesInput = {
@@ -1445,6 +1489,7 @@ export type TenantUncheckedUpdateWithoutTrainingCoursesInput = {
   trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutTrainingEnrollmentsInput = {
@@ -1471,6 +1516,7 @@ export type TenantCreateWithoutTrainingEnrollmentsInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutTrainingEnrollmentsInput = {
@@ -1497,6 +1543,7 @@ export type TenantUncheckedCreateWithoutTrainingEnrollmentsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutTrainingEnrollmentsInput = {
@@ -1539,6 +1586,7 @@ export type TenantUpdateWithoutTrainingEnrollmentsInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutTrainingEnrollmentsInput = {
@@ -1565,6 +1613,7 @@ export type TenantUncheckedUpdateWithoutTrainingEnrollmentsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutRiskScoresInput = {
@@ -1591,6 +1640,7 @@ export type TenantCreateWithoutRiskScoresInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutRiskScoresInput = {
@@ -1617,6 +1667,7 @@ export type TenantUncheckedCreateWithoutRiskScoresInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutRiskScoresInput = {
@@ -1659,6 +1710,7 @@ export type TenantUpdateWithoutRiskScoresInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutRiskScoresInput = {
@@ -1685,6 +1737,7 @@ export type TenantUncheckedUpdateWithoutRiskScoresInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutPhishingSimulationsInput = {
@@ -1711,6 +1764,7 @@ export type TenantCreateWithoutPhishingSimulationsInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutPhishingSimulationsInput = {
@@ -1737,6 +1791,7 @@ export type TenantUncheckedCreateWithoutPhishingSimulationsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutPhishingSimulationsInput = {
@@ -1779,6 +1834,7 @@ export type TenantUpdateWithoutPhishingSimulationsInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutPhishingSimulationsInput = {
@@ -1805,6 +1861,7 @@ export type TenantUncheckedUpdateWithoutPhishingSimulationsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutPhishingSimulationRecipientsInput = {
@@ -1831,6 +1888,7 @@ export type TenantCreateWithoutPhishingSimulationRecipientsInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutPhishingSimulationRecipientsInput = {
@@ -1857,6 +1915,7 @@ export type TenantUncheckedCreateWithoutPhishingSimulationRecipientsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutPhishingSimulationRecipientsInput = {
@@ -1899,6 +1958,7 @@ export type TenantUpdateWithoutPhishingSimulationRecipientsInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutPhishingSimulationRecipientsInput = {
@@ -1925,6 +1985,7 @@ export type TenantUncheckedUpdateWithoutPhishingSimulationRecipientsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutPhishingSimulationEventsInput = {
@@ -1951,6 +2012,7 @@ export type TenantCreateWithoutPhishingSimulationEventsInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutPhishingSimulationEventsInput = {
@@ -1977,6 +2039,7 @@ export type TenantUncheckedCreateWithoutPhishingSimulationEventsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutPhishingSimulationEventsInput = {
@@ -2019,6 +2082,7 @@ export type TenantUpdateWithoutPhishingSimulationEventsInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutPhishingSimulationEventsInput = {
@@ -2045,6 +2109,7 @@ export type TenantUncheckedUpdateWithoutPhishingSimulationEventsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutMailDomainsInput = {
@@ -2071,6 +2136,7 @@ export type TenantCreateWithoutMailDomainsInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutMailDomainsInput = {
@@ -2097,6 +2163,7 @@ export type TenantUncheckedCreateWithoutMailDomainsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutMailDomainsInput = {
@@ -2139,6 +2206,7 @@ export type TenantUpdateWithoutMailDomainsInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutMailDomainsInput = {
@@ -2165,6 +2233,7 @@ export type TenantUncheckedUpdateWithoutMailDomainsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutPhishingTemplatesInput = {
@@ -2191,6 +2260,7 @@ export type TenantCreateWithoutPhishingTemplatesInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutPhishingTemplatesInput = {
@@ -2217,6 +2287,7 @@ export type TenantUncheckedCreateWithoutPhishingTemplatesInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutPhishingTemplatesInput = {
@@ -2259,6 +2330,7 @@ export type TenantUpdateWithoutPhishingTemplatesInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutPhishingTemplatesInput = {
@@ -2285,6 +2357,7 @@ export type TenantUncheckedUpdateWithoutPhishingTemplatesInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutOutboundMailEventsInput = {
@@ -2311,6 +2384,7 @@ export type TenantCreateWithoutOutboundMailEventsInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutOutboundMailEventsInput = {
@@ -2337,6 +2411,7 @@ export type TenantUncheckedCreateWithoutOutboundMailEventsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutOutboundMailEventsInput = {
@@ -2379,6 +2454,7 @@ export type TenantUpdateWithoutOutboundMailEventsInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutOutboundMailEventsInput = {
@@ -2405,6 +2481,7 @@ export type TenantUncheckedUpdateWithoutOutboundMailEventsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutMailSuppressionsInput = {
@@ -2431,6 +2508,7 @@ export type TenantCreateWithoutMailSuppressionsInput = {
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutMailSuppressionsInput = {
@@ -2457,6 +2535,7 @@ export type TenantUncheckedCreateWithoutMailSuppressionsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutMailSuppressionsInput = {
@@ -2499,6 +2578,7 @@ export type TenantUpdateWithoutMailSuppressionsInput = {
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutMailSuppressionsInput = {
@@ -2525,6 +2605,7 @@ export type TenantUncheckedUpdateWithoutMailSuppressionsInput = {
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutTenantModuleAccessesInput = {
@@ -2551,6 +2632,7 @@ export type TenantCreateWithoutTenantModuleAccessesInput = {
   trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutTenantInput
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutTenantModuleAccessesInput = {
@@ -2577,6 +2659,7 @@ export type TenantUncheckedCreateWithoutTenantModuleAccessesInput = {
   trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutTenantInput
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutTenantModuleAccessesInput = {
@@ -2619,6 +2702,7 @@ export type TenantUpdateWithoutTenantModuleAccessesInput = {
   trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutTenantNestedInput
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutTenantModuleAccessesInput = {
@@ -2645,6 +2729,7 @@ export type TenantUncheckedUpdateWithoutTenantModuleAccessesInput = {
   trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutTenantNestedInput
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantCreateWithoutAutomationRulesInput = {
@@ -2671,6 +2756,7 @@ export type TenantCreateWithoutAutomationRulesInput = {
   trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutTenantInput
   trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutTenantInput
 }
 
 export type TenantUncheckedCreateWithoutAutomationRulesInput = {
@@ -2697,6 +2783,7 @@ export type TenantUncheckedCreateWithoutAutomationRulesInput = {
   trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutTenantInput
   trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutTenantInput
 }
 
 export type TenantCreateOrConnectWithoutAutomationRulesInput = {
@@ -2739,6 +2826,7 @@ export type TenantUpdateWithoutAutomationRulesInput = {
   trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutTenantNestedInput
   trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutTenantNestedInput
 }
 
 export type TenantUncheckedUpdateWithoutAutomationRulesInput = {
@@ -2765,6 +2853,131 @@ export type TenantUncheckedUpdateWithoutAutomationRulesInput = {
   trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutTenantNestedInput
   trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
   tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutTenantNestedInput
+}
+
+export type TenantCreateWithoutInvitationsInput = {
+  id?: string
+  name: string
+  slug: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  mailSuppressions?: Prisma.MailSuppressionCreateNestedManyWithoutTenantInput
+  outboundMailEvents?: Prisma.OutboundMailEventCreateNestedManyWithoutTenantInput
+  phishingTemplates?: Prisma.PhishingTemplateCreateNestedManyWithoutTenantInput
+  mailDomains?: Prisma.TenantMailDomainCreateNestedManyWithoutTenantInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventCreateNestedManyWithoutTenantInput
+  phishingSimulations?: Prisma.PhishingSimulationCreateNestedManyWithoutTenantInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientCreateNestedManyWithoutTenantInput
+  riskScores?: Prisma.RiskScoreCreateNestedManyWithoutTenantInput
+  users?: Prisma.UserCreateNestedManyWithoutTenantInput
+  roles?: Prisma.RoleCreateNestedManyWithoutTenantInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutTenantInput
+  campaigns?: Prisma.CampaignCreateNestedManyWithoutTenantInput
+  campaignAssignments?: Prisma.CampaignAssignmentCreateNestedManyWithoutTenantInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentCreateNestedManyWithoutTenantInput
+  trainingCourses?: Prisma.TrainingCourseCreateNestedManyWithoutTenantInput
+  tenantModuleAccesses?: Prisma.TenantModuleAccessCreateNestedManyWithoutTenantInput
+  automationRules?: Prisma.AutomationRuleCreateNestedManyWithoutTenantInput
+}
+
+export type TenantUncheckedCreateWithoutInvitationsInput = {
+  id?: string
+  name: string
+  slug: string
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deletedAt?: Date | string | null
+  mailSuppressions?: Prisma.MailSuppressionUncheckedCreateNestedManyWithoutTenantInput
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedCreateNestedManyWithoutTenantInput
+  phishingTemplates?: Prisma.PhishingTemplateUncheckedCreateNestedManyWithoutTenantInput
+  mailDomains?: Prisma.TenantMailDomainUncheckedCreateNestedManyWithoutTenantInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedCreateNestedManyWithoutTenantInput
+  phishingSimulations?: Prisma.PhishingSimulationUncheckedCreateNestedManyWithoutTenantInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedCreateNestedManyWithoutTenantInput
+  riskScores?: Prisma.RiskScoreUncheckedCreateNestedManyWithoutTenantInput
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutTenantInput
+  roles?: Prisma.RoleUncheckedCreateNestedManyWithoutTenantInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutTenantInput
+  campaigns?: Prisma.CampaignUncheckedCreateNestedManyWithoutTenantInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedCreateNestedManyWithoutTenantInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedCreateNestedManyWithoutTenantInput
+  trainingCourses?: Prisma.TrainingCourseUncheckedCreateNestedManyWithoutTenantInput
+  tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedCreateNestedManyWithoutTenantInput
+  automationRules?: Prisma.AutomationRuleUncheckedCreateNestedManyWithoutTenantInput
+}
+
+export type TenantCreateOrConnectWithoutInvitationsInput = {
+  where: Prisma.TenantWhereUniqueInput
+  create: Prisma.XOR<Prisma.TenantCreateWithoutInvitationsInput, Prisma.TenantUncheckedCreateWithoutInvitationsInput>
+}
+
+export type TenantUpsertWithoutInvitationsInput = {
+  update: Prisma.XOR<Prisma.TenantUpdateWithoutInvitationsInput, Prisma.TenantUncheckedUpdateWithoutInvitationsInput>
+  create: Prisma.XOR<Prisma.TenantCreateWithoutInvitationsInput, Prisma.TenantUncheckedCreateWithoutInvitationsInput>
+  where?: Prisma.TenantWhereInput
+}
+
+export type TenantUpdateToOneWithWhereWithoutInvitationsInput = {
+  where?: Prisma.TenantWhereInput
+  data: Prisma.XOR<Prisma.TenantUpdateWithoutInvitationsInput, Prisma.TenantUncheckedUpdateWithoutInvitationsInput>
+}
+
+export type TenantUpdateWithoutInvitationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mailSuppressions?: Prisma.MailSuppressionUpdateManyWithoutTenantNestedInput
+  outboundMailEvents?: Prisma.OutboundMailEventUpdateManyWithoutTenantNestedInput
+  phishingTemplates?: Prisma.PhishingTemplateUpdateManyWithoutTenantNestedInput
+  mailDomains?: Prisma.TenantMailDomainUpdateManyWithoutTenantNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUpdateManyWithoutTenantNestedInput
+  phishingSimulations?: Prisma.PhishingSimulationUpdateManyWithoutTenantNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUpdateManyWithoutTenantNestedInput
+  riskScores?: Prisma.RiskScoreUpdateManyWithoutTenantNestedInput
+  users?: Prisma.UserUpdateManyWithoutTenantNestedInput
+  roles?: Prisma.RoleUpdateManyWithoutTenantNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutTenantNestedInput
+  campaigns?: Prisma.CampaignUpdateManyWithoutTenantNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUpdateManyWithoutTenantNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUpdateManyWithoutTenantNestedInput
+  trainingCourses?: Prisma.TrainingCourseUpdateManyWithoutTenantNestedInput
+  tenantModuleAccesses?: Prisma.TenantModuleAccessUpdateManyWithoutTenantNestedInput
+  automationRules?: Prisma.AutomationRuleUpdateManyWithoutTenantNestedInput
+}
+
+export type TenantUncheckedUpdateWithoutInvitationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  mailSuppressions?: Prisma.MailSuppressionUncheckedUpdateManyWithoutTenantNestedInput
+  outboundMailEvents?: Prisma.OutboundMailEventUncheckedUpdateManyWithoutTenantNestedInput
+  phishingTemplates?: Prisma.PhishingTemplateUncheckedUpdateManyWithoutTenantNestedInput
+  mailDomains?: Prisma.TenantMailDomainUncheckedUpdateManyWithoutTenantNestedInput
+  phishingSimulationEvents?: Prisma.PhishingSimulationEventUncheckedUpdateManyWithoutTenantNestedInput
+  phishingSimulations?: Prisma.PhishingSimulationUncheckedUpdateManyWithoutTenantNestedInput
+  phishingSimulationRecipients?: Prisma.PhishingSimulationRecipientUncheckedUpdateManyWithoutTenantNestedInput
+  riskScores?: Prisma.RiskScoreUncheckedUpdateManyWithoutTenantNestedInput
+  users?: Prisma.UserUncheckedUpdateManyWithoutTenantNestedInput
+  roles?: Prisma.RoleUncheckedUpdateManyWithoutTenantNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutTenantNestedInput
+  campaigns?: Prisma.CampaignUncheckedUpdateManyWithoutTenantNestedInput
+  campaignAssignments?: Prisma.CampaignAssignmentUncheckedUpdateManyWithoutTenantNestedInput
+  trainingEnrollments?: Prisma.TrainingEnrollmentUncheckedUpdateManyWithoutTenantNestedInput
+  trainingCourses?: Prisma.TrainingCourseUncheckedUpdateManyWithoutTenantNestedInput
+  tenantModuleAccesses?: Prisma.TenantModuleAccessUncheckedUpdateManyWithoutTenantNestedInput
+  automationRules?: Prisma.AutomationRuleUncheckedUpdateManyWithoutTenantNestedInput
 }
 
 
@@ -2790,6 +3003,7 @@ export type TenantCountOutputType = {
   trainingCourses: number
   tenantModuleAccesses: number
   automationRules: number
+  invitations: number
 }
 
 export type TenantCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2810,6 +3024,7 @@ export type TenantCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions
   trainingCourses?: boolean | TenantCountOutputTypeCountTrainingCoursesArgs
   tenantModuleAccesses?: boolean | TenantCountOutputTypeCountTenantModuleAccessesArgs
   automationRules?: boolean | TenantCountOutputTypeCountAutomationRulesArgs
+  invitations?: boolean | TenantCountOutputTypeCountInvitationsArgs
 }
 
 /**
@@ -2941,6 +3156,13 @@ export type TenantCountOutputTypeCountAutomationRulesArgs<ExtArgs extends runtim
   where?: Prisma.AutomationRuleWhereInput
 }
 
+/**
+ * TenantCountOutputType without action
+ */
+export type TenantCountOutputTypeCountInvitationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InvitationWhereInput
+}
+
 
 export type TenantSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2967,6 +3189,7 @@ export type TenantSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   trainingCourses?: boolean | Prisma.Tenant$trainingCoursesArgs<ExtArgs>
   tenantModuleAccesses?: boolean | Prisma.Tenant$tenantModuleAccessesArgs<ExtArgs>
   automationRules?: boolean | Prisma.Tenant$automationRulesArgs<ExtArgs>
+  invitations?: boolean | Prisma.Tenant$invitationsArgs<ExtArgs>
   _count?: boolean | Prisma.TenantCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tenant"]>
 
@@ -3019,6 +3242,7 @@ export type TenantInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   trainingCourses?: boolean | Prisma.Tenant$trainingCoursesArgs<ExtArgs>
   tenantModuleAccesses?: boolean | Prisma.Tenant$tenantModuleAccessesArgs<ExtArgs>
   automationRules?: boolean | Prisma.Tenant$automationRulesArgs<ExtArgs>
+  invitations?: boolean | Prisma.Tenant$invitationsArgs<ExtArgs>
   _count?: boolean | Prisma.TenantCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type TenantIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -3044,6 +3268,7 @@ export type $TenantPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     trainingCourses: Prisma.$TrainingCoursePayload<ExtArgs>[]
     tenantModuleAccesses: Prisma.$TenantModuleAccessPayload<ExtArgs>[]
     automationRules: Prisma.$AutomationRulePayload<ExtArgs>[]
+    invitations: Prisma.$InvitationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3464,6 +3689,7 @@ export interface Prisma__TenantClient<T, Null = never, ExtArgs extends runtime.T
   trainingCourses<T extends Prisma.Tenant$trainingCoursesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$trainingCoursesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TrainingCoursePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   tenantModuleAccesses<T extends Prisma.Tenant$tenantModuleAccessesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$tenantModuleAccessesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TenantModuleAccessPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   automationRules<T extends Prisma.Tenant$automationRulesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$automationRulesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AutomationRulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  invitations<T extends Prisma.Tenant$invitationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tenant$invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4298,6 +4524,30 @@ export type Tenant$automationRulesArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.AutomationRuleScalarFieldEnum | Prisma.AutomationRuleScalarFieldEnum[]
+}
+
+/**
+ * Tenant.invitations
+ */
+export type Tenant$invitationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Invitation
+   */
+  select?: Prisma.InvitationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Invitation
+   */
+  omit?: Prisma.InvitationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.InvitationInclude<ExtArgs> | null
+  where?: Prisma.InvitationWhereInput
+  orderBy?: Prisma.InvitationOrderByWithRelationInput | Prisma.InvitationOrderByWithRelationInput[]
+  cursor?: Prisma.InvitationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.InvitationScalarFieldEnum | Prisma.InvitationScalarFieldEnum[]
 }
 
 /**
